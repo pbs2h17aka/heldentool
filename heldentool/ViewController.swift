@@ -14,6 +14,7 @@ class ViewController: UIViewController {
         super.viewDidLoad()
         // Do any additional setup after loading the view.
         // und los gehts mit dem tollen Heldentool
+        self.loadBaseData()
     }
 
     // Methode um den Stammdaten JSON abzufragen
@@ -33,7 +34,7 @@ class ViewController: UIViewController {
             else
             {
                 //das wird ausgeführt, wenn die Daten vollständig geladen wurden
-                //self.datenParsenUndVerarbeiten (data: data!)
+                self.parseBaseData (data: data!)
             }
         })
         
@@ -42,7 +43,68 @@ class ViewController: UIViewController {
     }
     
     func parseBaseData(data:Data?){
-        print("Oberst von Bratwurst grüßt die Männer von der Fritten Braterei!")
+
+        struct RassenDaten : Decodable {
+            var name : String
+            var mut : Int
+            var klugheit : Int
+            var intuition : Int
+            var charisma : Int
+            var fingerfertigkeit : Int
+            var gewandheit : Int
+            var koerperkraft : Int
+            
+            enum CodingKeys : String, CodingKey {
+                case RassenDaten = "0"  //Falls im jSon-String andere Bezeichner verwendet werden als in der passenden Klasse/Struct, kann so manuell zugeordnet werden
+            }
+        }
+        
+        struct KulturDaten : Decodable {
+            var name : String
+            var waffen : Int
+            var magie : Int
+            var wunder : Int
+            var gesellschaft : Int
+            var wissen : Int
+            var handwerk : Int
+            var medizin : Int
+            var wildnis : Int
+            var heimlichkeit : Int
+            var athletik : Int
+            
+            enum CodingKeys : String, CodingKey {
+                case KulturDaten = "1"  //Falls im jSon-String andere Bezeichner verwendet werden als in der passenden Klasse/Struct, kann so manuell zugeordnet werden
+            }
+        }
+        
+        struct ProfessionenDaten : Decodable {
+            var name : String
+            var waffen : Int
+            var magie : Int
+            var wunder : Int
+            var gesellschaft : Int
+            var wissen : Int
+            var handwerk : Int
+            var medizin : Int
+            var wildnis : Int
+            var heimlichkeit : Int
+            var athletik : Int
+            
+            enum CodingKeys : String, CodingKey {
+                case ProfessionenDaten = "2"  //Falls im jSon-String andere Bezeichner verwendet werden als in der passenden Klasse/Struct, kann so manuell zugeordnet werden
+            }
+        }
+        
+        struct StammDaten : Decodable  {
+            var Rassen : RassenDaten
+            var Kulturen : KulturDaten
+            var Professionen : ProfessionenDaten
+
+            
+            enum CodingKeys : String, CodingKey {
+                case spielerArray = "alleSpieler"  //Falls im jSon-String andere Bezeichner verwendet werden als in der passenden Klasse/Struct, kann so manuell zugeordnet werden
+            }
+        }
     }
 
 }
