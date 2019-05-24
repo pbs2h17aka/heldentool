@@ -53,10 +53,6 @@ class ViewController: UIViewController {
             var fingerfertigkeit : Int
             var gewandheit : Int
             var koerperkraft : Int
-            
-            enum CodingKeys : String, CodingKey {
-                case RassenDaten = "0"  //Falls im jSon-String andere Bezeichner verwendet werden als in der passenden Klasse/Struct, kann so manuell zugeordnet werden
-            }
         }
         
         struct KulturDaten : Decodable {
@@ -71,10 +67,6 @@ class ViewController: UIViewController {
             var wildnis : Int
             var heimlichkeit : Int
             var athletik : Int
-            
-            enum CodingKeys : String, CodingKey {
-                case KulturDaten = "1"  //Falls im jSon-String andere Bezeichner verwendet werden als in der passenden Klasse/Struct, kann so manuell zugeordnet werden
-            }
         }
         
         struct ProfessionenDaten : Decodable {
@@ -89,10 +81,6 @@ class ViewController: UIViewController {
             var wildnis : Int
             var heimlichkeit : Int
             var athletik : Int
-            
-            enum CodingKeys : String, CodingKey {
-                case ProfessionenDaten = "2"  //Falls im jSon-String andere Bezeichner verwendet werden als in der passenden Klasse/Struct, kann so manuell zugeordnet werden
-            }
         }
         
         struct StammDaten : Decodable  {
@@ -100,9 +88,10 @@ class ViewController: UIViewController {
             var Kulturen : KulturDaten
             var Professionen : ProfessionenDaten
 
-            
             enum CodingKeys : String, CodingKey {
-                case spielerArray = "alleSpieler"  //Falls im jSon-String andere Bezeichner verwendet werden als in der passenden Klasse/Struct, kann so manuell zugeordnet werden
+                case Rassen = "0"
+                case Kulturen = "1"
+                case Professionen = "2"
             }
         }
     }
