@@ -21,7 +21,7 @@ class ViewController: UIViewController {
     func loadBaseData(){
         
         //1 Datenquelle definieren:
-        let URLString = "http://pbs2h17aka.web.pb.bib.de/jsonExample.php"
+        let URLString = "http://pbs2h17aka.web.pb.bib.de/SIA/heldentool.php"
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let searchURL = URL(string: URLString)
         let urlRequest = URLRequest(url: searchURL!)
@@ -94,6 +94,43 @@ class ViewController: UIViewController {
                 case Professionen = "2"
             }
         }
+        
+        
+        
+        
+        if data != nil {
+            let dataString = String(data:  data!, encoding: String.Encoding.utf8)
+
+            
+            print(dataString!)
+            
+            //let response = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions(rawValue:0)) as SpielerList! // falls ein Array ankommt: as! [AnyObject]
+            
+            
+            let stammDaten = try? JSONDecoder().decode(StammDaten.self, from: data!)  //SpielerList.self ist der Typ "Spielerlist"
+            if stammDaten == nil {
+                print("Error: Couldn't decode data into SpielerList")
+            }
+            else
+            {
+                //alleSpieler=spielerList!.spielerArray;
+                //print (" \(  alleSpieler.count) Spieler: \(alleSpieler)")
+                
+                
+                
+                //DispatchQueue.main.async {
+                //Main Thread die Oberfläche aktualisieren lassen, z.B.:
+                //self.tableView.reloadData()
+                //}
+            }
+
+        }
+        else {
+            print("nichts erhalten")
+        }
+        
+        
+    
     }
 
 }
