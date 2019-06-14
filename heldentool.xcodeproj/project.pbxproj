@@ -17,6 +17,8 @@
 		222D43652297F8370090C888 /* heldentoolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43642297F8370090C888 /* heldentoolUITests.swift */; };
 		222D43742297FF680090C888 /* Rasse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */; };
 		222D43752297FF680090C888 /* Rasse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */; };
+		AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2622B3957400821886 /* CreateAllgController.swift */; };
+		AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2822B3AB4300821886 /* CreateAttrController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -53,6 +55,8 @@
 		222D43662297F8370090C888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rasse+CoreDataClass.swift"; sourceTree = "<group>"; };
 		222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rasse+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AE822C2622B3957400821886 /* CreateAllgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllgController.swift; sourceTree = "<group>"; };
+		AE822C2822B3AB4300821886 /* CreateAttrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAttrController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -107,6 +111,8 @@
 			children = (
 				222D43412297F8360090C888 /* AppDelegate.swift */,
 				222D43432297F8360090C888 /* ViewController.swift */,
+				AE822C2622B3957400821886 /* CreateAllgController.swift */,
+				AE822C2822B3AB4300821886 /* CreateAttrController.swift */,
 				222D43452297F8360090C888 /* Main.storyboard */,
 				222D434B2297F8370090C888 /* Assets.xcassets */,
 				222D434D2297F8370090C888 /* LaunchScreen.storyboard */,
@@ -265,11 +271,13 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */,
 				222D43752297FF680090C888 /* Rasse+CoreDataProperties.swift in Sources */,
 				222D43442297F8360090C888 /* ViewController.swift in Sources */,
 				222D43422297F8360090C888 /* AppDelegate.swift in Sources */,
 				222D43742297FF680090C888 /* Rasse+CoreDataClass.swift in Sources */,
 				222D434A2297F8360090C888 /* heldentool.xcdatamodeld in Sources */,
+				AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -453,7 +461,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nelumbo.heldentool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Debug;
 		};
@@ -470,7 +478,7 @@
 				PRODUCT_BUNDLE_IDENTIFIER = nelumbo.heldentool;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
-				TARGETED_DEVICE_FAMILY = "1,2";
+				TARGETED_DEVICE_FAMILY = 1;
 			};
 			name = Release;
 		};
