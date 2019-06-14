@@ -9,6 +9,12 @@
 import UIKit
 
 class ViewController: UIViewController {
+    
+    
+    var alleRassen : [Any] = Array()
+    var alleKulturen : [Any] = Array()
+    var alleProfessionen : [Any] = Array()
+    
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -84,37 +90,36 @@ class ViewController: UIViewController {
         }
         
         struct StammDaten : Decodable  {
-            var Rassen : RassenDaten
-            var Kulturen : KulturDaten
-            var Professionen : ProfessionenDaten
-
-            enum CodingKeys : String, CodingKey {
-                case Rassen = "0"
-                case Kulturen = "1"
-                case Professionen = "2"
-            }
+            var Rassen : [RassenDaten]
+            var Kulturen : [KulturDaten]
+            var Professionen : [ProfessionenDaten]
         }
         
-        
-        
+        struct AlleDaten : Decodable {
+            var alleDaten : StammDaten
+        }
         
         if data != nil {
-            let dataString = String(data:  data!, encoding: String.Encoding.utf8)
-
             
-            print(dataString!)
+            //let dataString = String(data:  data!, encoding: String.Encoding.utf8)
+            //print(dataString!)
             
-            //let response = try JSONSerialization.jsonObject(with: data!, options: JSONSerialization.ReadingOptions(rawValue:0)) as SpielerList! // falls ein Array ankommt: as! [AnyObject]
+            let stammDaten = try? JSONDecoder().decode(AlleDaten.self, from: data!)
             
-            
-            let stammDaten = try? JSONDecoder().decode(StammDaten.self, from: data!)  //SpielerList.self ist der Typ "Spielerlist"
             if stammDaten == nil {
-                print("Error: Couldn't decode data into SpielerList")
+                print("Error: Couldn't decode data into Stammdaten")
             }
             else
             {
-                //alleSpieler=spielerList!.spielerArray;
-                //print (" \(  alleSpieler.count) Spieler: \(alleSpieler)")
+                alleRassen = stammDaten!.alleDaten.Rassen
+                print (" \(  alleRassen.count) Rassen: \(alleRassen)")
+                
+                alleKulturen = stammDaten!.alleDaten.Kulturen
+                print (" \(  alleKulturen.count) Kulturen: \(alleKulturen)")
+                
+                alleProfessionen = stammDaten!.alleDaten.Professionen
+                print (" \(  alleProfessionen.count) Professionen: \(alleProfessionen)")
+                
                 
                 
                 
@@ -131,6 +136,11 @@ class ViewController: UIViewController {
         
         
     
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }
