@@ -11,32 +11,19 @@ import UIKit
 class ViewController: UIViewController,
 UITableViewDelegate, UITableViewDataSource {
     
+    
+    // Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logo: UIImageView!
     
+    // Core Data Model
     let rasseModel = RasseModel.item
     
     var alleRassen : [Rasse] = Array()
     var alleKulturen : [Any] = Array()
     var alleProfessionen : [Any] = Array()
     
-    let imageLogo = UIImage(named: "Logo")!
-    
-    let test =  ["Ardo","Borkmeister","Travia","grumbuzki","Festumske"]
-    
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return test.count
-    }
-    
-    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
-        cell.textLabel?.text = test[indexPath.row]
-        return cell
-    }
-
-
-    
-    
+    // Structs
     struct RassenDaten : Decodable {
         var name : String
         var mut : Int
@@ -86,6 +73,25 @@ UITableViewDelegate, UITableViewDataSource {
         var alleDaten : StammDaten
     }
     
+    // Logo
+    let imageLogo = UIImage(named: "Logo")!
+    
+    
+    // ---------------------------------------------------------------------------------------------------
+    let test =  ["Ardo","Borkmeister","Travia","grumbuzki","Festumske"]
+    // ---------------------------------------------------------------------------------------------------
+    
+    
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        return test.count
+    }
+    
+    func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
+        cell.textLabel?.text = test[indexPath.row]
+        return cell
+    }
+
 
     override func viewDidLoad() {
         super.viewDidLoad()
