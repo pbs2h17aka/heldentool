@@ -15,6 +15,9 @@ UITableViewDelegate, UITableViewDataSource {
     @IBOutlet weak var logo: UIImageView!
     
     
+    var alleRassen : [Any] = Array()
+    var alleKulturen : [Any] = Array()
+    var alleProfessionen : [Any] = Array()
     
     let imageLogo = UIImage(named: "Logo")!
     
@@ -29,13 +32,7 @@ UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = test[indexPath.row]
         return cell
     }
-class ViewController: UIViewController {
-    
-    
-    var alleRassen : [Any] = Array()
-    var alleKulturen : [Any] = Array()
-    var alleProfessionen : [Any] = Array()
-    
+
 
     
     override func viewDidLoad() {
