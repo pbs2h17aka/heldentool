@@ -29,6 +29,13 @@ UITableViewDelegate, UITableViewDataSource {
         cell.textLabel?.text = test[indexPath.row]
         return cell
     }
+class ViewController: UIViewController {
+    
+    
+    var alleRassen : [Any] = Array()
+    var alleKulturen : [Any] = Array()
+    var alleProfessionen : [Any] = Array()
+    
 
     
     override func viewDidLoad() {
@@ -41,7 +48,7 @@ UITableViewDelegate, UITableViewDataSource {
     func loadBaseData(){
         
         //1 Datenquelle definieren:
-        let URLString = "http://pbs2h17aka.web.pb.bib.de/jsonExample.php"
+        let URLString = "http://pbs2h17aka.web.pb.bib.de/SIA/heldentool.php"
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let searchURL = URL(string: URLString)
         let urlRequest = URLRequest(url: searchURL!)
@@ -104,16 +111,57 @@ UITableViewDelegate, UITableViewDataSource {
         }
         
         struct StammDaten : Decodable  {
-            var Rassen : RassenDaten
-            var Kulturen : KulturDaten
-            var Professionen : ProfessionenDaten
-
-            enum CodingKeys : String, CodingKey {
-                case Rassen = "0"
-                case Kulturen = "1"
-                case Professionen = "2"
-            }
+            var Rassen : [RassenDaten]
+            var Kulturen : [KulturDaten]
+            var Professionen : [ProfessionenDaten]
         }
+        
+        struct AlleDaten : Decodable {
+            var alleDaten : StammDaten
+        }
+        
+        if data != nil {
+            
+            //let dataString = String(data:  data!, encoding: String.Encoding.utf8)
+            //print(dataString!)
+            
+            let stammDaten = try? JSONDecoder().decode(AlleDaten.self, from: data!)
+            
+            if stammDaten == nil {
+                print("Error: Couldn't decode data into Stammdaten")
+            }
+            else
+            {
+                alleRassen = stammDaten!.alleDaten.Rassen
+                print (" \(  alleRassen.count) Rassen: \(alleRassen)")
+                
+                alleKulturen = stammDaten!.alleDaten.Kulturen
+                print (" \(  alleKulturen.count) Kulturen: \(alleKulturen)")
+                
+                alleProfessionen = stammDaten!.alleDaten.Professionen
+                print (" \(  alleProfessionen.count) Professionen: \(alleProfessionen)")
+                
+                
+                
+                
+                //DispatchQueue.main.async {
+                //Main Thread die Oberfläche aktualisieren lassen, z.B.:
+                //self.tableView.reloadData()
+                //}
+            }
+
+        }
+        else {
+            print("nichts erhalten")
+        }
+        
+        
+    
+    }
+    
+    override func didReceiveMemoryWarning() {
+        super.didReceiveMemoryWarning()
+        // Dispose of any resources that can be recreated.
     }
 
 }
