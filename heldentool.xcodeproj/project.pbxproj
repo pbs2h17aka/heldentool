@@ -21,6 +21,7 @@
 		2250C64422B383410072A5D2 /* Kultur+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64022B383410072A5D2 /* Kultur+CoreDataProperties.swift */; };
 		2250C64522B383410072A5D2 /* Profession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */; };
 		2250C64622B383410072A5D2 /* Profession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */; };
+		2250C64822B3AD3B0072A5D2 /* RasseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64722B3AD3B0072A5D2 /* RasseModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -61,6 +62,7 @@
 		2250C64022B383410072A5D2 /* Kultur+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kultur+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profession+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profession+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		2250C64722B3AD3B0072A5D2 /* RasseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasseModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -96,6 +98,7 @@
 				2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */,
 				2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */,
 				222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */,
+				2250C64722B3AD3B0072A5D2 /* RasseModel.swift */,
 				222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */,
 				222D43402297F8360090C888 /* heldentool */,
 				222D43582297F8370090C888 /* heldentoolTests */,
@@ -283,6 +286,7 @@
 				2250C64422B383410072A5D2 /* Kultur+CoreDataProperties.swift in Sources */,
 				2250C64622B383410072A5D2 /* Profession+CoreDataProperties.swift in Sources */,
 				222D43422297F8360090C888 /* AppDelegate.swift in Sources */,
+				2250C64822B3AD3B0072A5D2 /* RasseModel.swift in Sources */,
 				2250C64522B383410072A5D2 /* Profession+CoreDataClass.swift in Sources */,
 				222D43742297FF680090C888 /* Rasse+CoreDataClass.swift in Sources */,
 				222D434A2297F8360090C888 /* heldentool.xcdatamodeld in Sources */,

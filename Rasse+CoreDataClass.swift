@@ -12,5 +12,10 @@ import CoreData
 
 @objc(Rasse)
 public class Rasse: NSManagedObject {
+    
+    override public var description: String {
+        
+        return name!
+    }
 
 }

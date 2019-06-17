@@ -10,10 +10,61 @@ import UIKit
 
 class ViewController: UIViewController {
     
+    let rasseModel = RasseModel.item
     
-    var alleRassen : [Any] = Array()
+    var alleRassen : [Rasse] = Array()
     var alleKulturen : [Any] = Array()
     var alleProfessionen : [Any] = Array()
+    
+    
+    struct RassenDaten : Decodable {
+        var name : String
+        var mut : Int
+        var klugheit : Int
+        var intuition : Int
+        var charisma : Int
+        var fingerfertigkeit : Int
+        var gewandheit : Int
+        var koerperkraft : Int
+    }
+    
+    struct KulturDaten : Decodable {
+        var name : String
+        var waffen : Int
+        var magie : Int
+        var wunder : Int
+        var gesellschaft : Int
+        var wissen : Int
+        var handwerk : Int
+        var medizin : Int
+        var wildnis : Int
+        var heimlichkeit : Int
+        var athletik : Int
+    }
+    
+    struct ProfessionenDaten : Decodable {
+        var name : String
+        var waffen : Int
+        var magie : Int
+        var wunder : Int
+        var gesellschaft : Int
+        var wissen : Int
+        var handwerk : Int
+        var medizin : Int
+        var wildnis : Int
+        var heimlichkeit : Int
+        var athletik : Int
+    }
+    
+    struct StammDaten : Decodable  {
+        var Rassen : [Rasse]
+        var Kulturen : [KulturDaten]
+        var Professionen : [ProfessionenDaten]
+    }
+    
+    struct AlleDaten : Decodable {
+        var alleDaten : StammDaten
+    }
     
 
     override func viewDidLoad() {
@@ -50,55 +101,6 @@ class ViewController: UIViewController {
     
     func parseBaseData(data:Data?){
 
-        struct RassenDaten : Decodable {
-            var name : String
-            var mut : Int
-            var klugheit : Int
-            var intuition : Int
-            var charisma : Int
-            var fingerfertigkeit : Int
-            var gewandheit : Int
-            var koerperkraft : Int
-        }
-        
-        struct KulturDaten : Decodable {
-            var name : String
-            var waffen : Int
-            var magie : Int
-            var wunder : Int
-            var gesellschaft : Int
-            var wissen : Int
-            var handwerk : Int
-            var medizin : Int
-            var wildnis : Int
-            var heimlichkeit : Int
-            var athletik : Int
-        }
-        
-        struct ProfessionenDaten : Decodable {
-            var name : String
-            var waffen : Int
-            var magie : Int
-            var wunder : Int
-            var gesellschaft : Int
-            var wissen : Int
-            var handwerk : Int
-            var medizin : Int
-            var wildnis : Int
-            var heimlichkeit : Int
-            var athletik : Int
-        }
-        
-        struct StammDaten : Decodable  {
-            var Rassen : [RassenDaten]
-            var Kulturen : [KulturDaten]
-            var Professionen : [ProfessionenDaten]
-        }
-        
-        struct AlleDaten : Decodable {
-            var alleDaten : StammDaten
-        }
-        
         if data != nil {
             
             //let dataString = String(data:  data!, encoding: String.Encoding.utf8)
@@ -112,16 +114,32 @@ class ViewController: UIViewController {
             else
             {
                 alleRassen = stammDaten!.alleDaten.Rassen
-                print (" \(  alleRassen.count) Rassen: \(alleRassen)")
+                //print (" \(  alleRassen.count) Rassen: \(alleRassen)")
                 
                 alleKulturen = stammDaten!.alleDaten.Kulturen
-                print (" \(  alleKulturen.count) Kulturen: \(alleKulturen)")
+                //print (" \(  alleKulturen.count) Kulturen: \(alleKulturen)")
                 
                 alleProfessionen = stammDaten!.alleDaten.Professionen
-                print (" \(  alleProfessionen.count) Professionen: \(alleProfessionen)")
+                //print (" \(  alleProfessionen.count) Professionen: \(alleProfessionen)")
+                
+                
+                for r in alleRassen {
+                    
+                    // Übertragung der Rassen in die Core Data
+                    let rasse = rasseModel.createRasse()
+                    rasse.name = r.name
+                    rasse.mut = r.mut
+                    rasse.klugheit = r.klugheit
+                    rasse.intuition = r.intuition
+                    rasse.charisma = r.charisma
+                    rasse.fingerfertigkeit = r.fingerfertigkeit
+                    rasse.gewandheit = r.gewandheit
+                    rasse.koerperkraft = r.koerperkraft
+                }
                 
                 
                 
+                print(rasseModel.rassen)
                 
                 //DispatchQueue.main.async {
                 //Main Thread die Oberfläche aktualisieren lassen, z.B.:
