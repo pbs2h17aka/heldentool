@@ -19,52 +19,52 @@ UITableViewDelegate, UITableViewDataSource {
     // Core Data Model
     let rasseModel = RasseModel.item
     
-    var alleRassen : [Rasse] = Array()
-    var alleKulturen : [Any] = Array()
-    var alleProfessionen : [Any] = Array()
+    var alleRassen : [RassenDaten] = Array()
+    var alleKulturen : [KulturDaten] = Array()
+    var alleProfessionen : [ProfessionenDaten] = Array()
     
     // Structs
     struct RassenDaten : Decodable {
         var name : String
-        var mut : Int
-        var klugheit : Int
-        var intuition : Int
-        var charisma : Int
-        var fingerfertigkeit : Int
-        var gewandheit : Int
-        var koerperkraft : Int
+        var mut : Int32
+        var klugheit : Int32
+        var intuition : Int32
+        var charisma : Int32
+        var fingerfertigkeit : Int32
+        var gewandheit : Int32
+        var koerperkraft : Int32
     }
     
     struct KulturDaten : Decodable {
         var name : String
-        var waffen : Int
-        var magie : Int
-        var wunder : Int
-        var gesellschaft : Int
-        var wissen : Int
-        var handwerk : Int
-        var medizin : Int
-        var wildnis : Int
-        var heimlichkeit : Int
-        var athletik : Int
+        var waffen : Int32
+        var magie : Int32
+        var wunder : Int32
+        var gesellschaft : Int32
+        var wissen : Int32
+        var handwerk : Int32
+        var medizin : Int32
+        var wildnis : Int32
+        var heimlichkeit : Int32
+        var athletik : Int32
     }
     
     struct ProfessionenDaten : Decodable {
         var name : String
-        var waffen : Int
-        var magie : Int
-        var wunder : Int
-        var gesellschaft : Int
-        var wissen : Int
-        var handwerk : Int
-        var medizin : Int
-        var wildnis : Int
-        var heimlichkeit : Int
-        var athletik : Int
+        var waffen : Int32
+        var magie : Int32
+        var wunder : Int32
+        var gesellschaft : Int32
+        var wissen : Int32
+        var handwerk : Int32
+        var medizin : Int32
+        var wildnis : Int32
+        var heimlichkeit : Int32
+        var athletik : Int32
     }
     
     struct StammDaten : Decodable  {
-        var Rassen : [Rasse]
+        var Rassen : [RassenDaten]
         var Kulturen : [KulturDaten]
         var Professionen : [ProfessionenDaten]
     }
