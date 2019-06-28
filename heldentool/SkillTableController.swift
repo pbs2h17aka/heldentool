@@ -2,7 +2,7 @@
 //  SkillTableController.swift
 //  heldentool
 //
-//  Created by Marius Gerhard / PBS2H17A on 6/28/19.
+//  Created by Christian Karrasch / PBS2H17A on 6/28/19.
 //  Copyright © 2019 Christian Karrasch / PBS2H17A. All rights reserved.
 //
 
@@ -10,38 +10,31 @@ import UIKit
 
 class SkillTableController: UITableViewController {
 
-    let skills = ["Waffen", "Magie","Wunder", "Gesellschaft",  "Wissen", "Handwerk", "Medizin", "Wildnis", "Heimlichkeit", "Athletik"]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
+
+        // Uncomment the following line to preserve selection between presentations
+        // self.clearsSelectionOnViewWillAppear = false
+
+        // Uncomment the following line to display an Edit button in the navigation bar for this view controller.
+        // self.navigationItem.rightBarButtonItem = self.editButtonItem
     }
 
-    //SECTIONS
+    // MARK: - Table view data source
+
     override func numberOfSections(in tableView: UITableView) -> Int {
         // #warning Incomplete implementation, return the number of sections
         return 1
     }
-    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if( section == 0){
-            return "Fertigkeiten"
-        }
-        return "Section \(section)"
-    }
-   
-    //ROWS
+
     override func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // #warning Incomplete implementation, return the number of rows
-        return skills.count
+        return 0
     }
     
-    override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-        let cell = tableView.dequeueReusableCell(withIdentifier: "skillCell", for: indexPath)
-        
-        cell.textLabel?.text = skills[indexPath.row]
-        
-        return cell
+    override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        return "pommes"
     }
-
 
     /*
     override func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
