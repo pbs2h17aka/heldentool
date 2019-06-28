@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
+// Klasse zur Verwaltung der Helden in der Core Data
 class HeldenModel {
     
     static let item = HeldenModel()
@@ -24,12 +25,14 @@ class HeldenModel {
         persistentContainer = appDelegate.persistentContainer
     }
     
+    // Methode erstellt neuen Held Core Data Eintrag
     func createHeld() -> Held
     {
         let held =  NSEntityDescription.insertNewObject(forEntityName: "Held", into: contentView) as! Held
         return held
     }
     
+    // Methode liefert alle Helden als [Held]
     var helden : [Held] {
         let request : NSFetchRequest <Held> = Held.fetchRequest()
         
@@ -41,6 +44,7 @@ class HeldenModel {
         return helden
     }
     
+    // Methode liefert alle Helden Namen als [String]
     var heldenNamen : [String] {
         let request : NSFetchRequest <Held> = Held.fetchRequest()
         
@@ -55,6 +59,23 @@ class HeldenModel {
         }
         
         return namen
+    }
+    
+    // Methode um einen Helden zu löschen
+    func loescheHeld(held:Held)
+    {
+        contentView.delete(held)
+    }
+    
+    // Methode liefert den Held mit Namen ...
+    func getHeld(name:String) -> [Held] {
+        let request : NSFetchRequest <Held> = Held.fetchRequest()
+        
+        let predicate = NSPredicate(format: "name == %@", name)
+        request.predicate=predicate
+        
+        let held = try! contentView.fetch(request)
+        return held
     }
 }
 

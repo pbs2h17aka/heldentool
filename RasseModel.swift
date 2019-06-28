@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
+// Klasse zur Verwaltung der Rassen in der Core Data
 class RasseModel {
     
     static let item = RasseModel()
@@ -24,12 +25,14 @@ class RasseModel {
         persistentContainer = appDelegate.persistentContainer
     }
 
+    // Methode erstellt neuen Rasse Core Data Eintrag
     func createRasse() -> Rasse
     {
         let rasse =  NSEntityDescription.insertNewObject(forEntityName: "Rasse", into: contentView) as! Rasse
         return rasse
     }
     
+    // Methode liefert alle Rassen als [Rasse]
     var rassen : [Rasse] {
         let request : NSFetchRequest <Rasse> = Rasse.fetchRequest()
         
@@ -41,6 +44,7 @@ class RasseModel {
         return rassen
     }
     
+    // Methode liefert alle Rassen Namen als [String]
     var rassenNamen : [String] {
         let request : NSFetchRequest <Rasse> = Rasse.fetchRequest()
         

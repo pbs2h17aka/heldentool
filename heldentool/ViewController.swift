@@ -11,6 +11,8 @@ import UIKit
 class ViewController: UIViewController,
 UITableViewDelegate, UITableViewDataSource {
     
+    // Logo
+    let imageLogo = UIImage(named: "Logo")!
     
     // Outlets
     @IBOutlet weak var tableView: UITableView!
@@ -27,6 +29,7 @@ UITableViewDelegate, UITableViewDataSource {
     var alleProfessionen : [ProfessionenDaten] = Array()
     
     // Structs
+    // Rassen
     struct RassenDaten : Decodable {
         var name : String
         var mut : Int32
@@ -37,7 +40,7 @@ UITableViewDelegate, UITableViewDataSource {
         var gewandheit : Int32
         var koerperkraft : Int32
     }
-    
+    // Kultur
     struct KulturDaten : Decodable {
         var name : String
         var waffen : Int32
@@ -51,7 +54,7 @@ UITableViewDelegate, UITableViewDataSource {
         var heimlichkeit : Int32
         var athletik : Int32
     }
-    
+    // Professionen
     struct ProfessionenDaten : Decodable {
         var name : String
         var waffen : Int32
@@ -65,25 +68,21 @@ UITableViewDelegate, UITableViewDataSource {
         var heimlichkeit : Int32
         var athletik : Int32
     }
-    
+    // Stammdaten: Rassen + Kulturen + Professionen
     struct StammDaten : Decodable  {
         var Rassen : [RassenDaten]
         var Kulturen : [KulturDaten]
         var Professionen : [ProfessionenDaten]
     }
-    
+    // JSON Formartierung
     struct AlleDaten : Decodable {
         var alleDaten : StammDaten
     }
-    
-    // Logo
-    let imageLogo = UIImage(named: "Logo")!
     
     
     // ---------------------------------------------------------------------------------------------------
     let test =  ["Ardo","Borkmeister","Travia","grumbuzki","Festumske"]
     // ---------------------------------------------------------------------------------------------------
-    
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return test.count
@@ -101,6 +100,9 @@ UITableViewDelegate, UITableViewDataSource {
         logo.image = imageLogo
         self.loadBaseData()
         self.createDummyHeroes()
+        
+        print("Gesuchter Held")
+        print(heldenModel.getHeld(name : "Ardo-jin Ghune"))
     }
 
     // Methode um den Stammdaten JSON abzufragen
@@ -128,13 +130,10 @@ UITableViewDelegate, UITableViewDataSource {
         dataTask.resume()
     }
     
+    // Methode um die Stammdaten in die Core Data zu schreiben
     func parseBaseData(data:Data?){
-
+        // Verarbeitung der Stammdaten wenn vorhanden
         if data != nil {
-            
-            //let dataString = String(data:  data!, encoding: String.Encoding.utf8)
-            //print(dataString!)
-            
             let stammDaten = try? JSONDecoder().decode(AlleDaten.self, from: data!)
             
             if stammDaten == nil {
@@ -142,16 +141,13 @@ UITableViewDelegate, UITableViewDataSource {
             }
             else
             {
+                // Stammdaten selektieren und zur Übertragung in
+                // Core Data vorbereiten
                 alleRassen = stammDaten!.alleDaten.Rassen
-                //print (" \(  alleRassen.count) Rassen: \(alleRassen)")
-                
                 alleKulturen = stammDaten!.alleDaten.Kulturen
-                //print (" \(  alleKulturen.count) Kulturen: \(alleKulturen)")
-                
                 alleProfessionen = stammDaten!.alleDaten.Professionen
-                //print (" \(  alleProfessionen.count) Professionen: \(alleProfessionen)")
                 
-                
+                // Durchlauf aller abgefragten assen
                 for r in alleRassen {
                     // Übertragung der Rassen in die Core Data
                     let rasse = rasseModel.createRasse()
@@ -165,7 +161,7 @@ UITableViewDelegate, UITableViewDataSource {
                     rasse.koerperkraft = r.koerperkraft
                 }
                 
-                
+                // Durchlauf aller abgefragten Kulturen
                 for k in alleKulturen {
                     // Übertragung der Kulturen in die Core Data
                     let kultur = kulturModel.createKultur()
@@ -182,7 +178,7 @@ UITableViewDelegate, UITableViewDataSource {
                     kultur.athletik = k.athletik
                 }
                 
-                
+                // Durchlauf aller abgefragten Professionen
                 for p in alleProfessionen {
                     // Übertragung der Professionen in die Core Data
                     let profession = professionModel.createProfession()
@@ -200,37 +196,26 @@ UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 // Ausgabe der Stammdaten aus der Core Data
-                print("Stammdaten aus der Core Data")
-                print("Rassen:")
-                print(rasseModel.rassenNamen)
-                print("Kulturen:")
-                print(kulturModel.kulturenNamen)
-                print("Professionen")
-                print(professionModel.professionenNamen)
-               
-                
-                //DispatchQueue.main.async {
-                //Main Thread die Oberfläche aktualisieren lassen, z.B.:
-                //self.tableView.reloadData()
-                //}
+                //print("Stammdaten aus der Core Data")
+                //print("Rassen:")
+                //print(rasseModel.rassenNamen)
+                //print("Kulturen:")
+                //print(kulturModel.kulturenNamen)
+                //print("Professionen")
+                //print(professionModel.professionenNamen)
             }
 
         }
+        // Fehlermeldung, wenn keine Stammdaten vorhanden sind
         else {
             print("Fehler: Keine Stammdaten erhalten.")
         }
-        
-        
-    
-        
-    
     }
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
-    
     
     // Methode zum Erstellen von Dummy Helden
     func createDummyHeroes() {
@@ -344,8 +329,8 @@ UITableViewDelegate, UITableViewDataSource {
         h4.wunder = 0
         
         // Ausgabe der Dummy Helden aus der Core Data
-        print("Helden:")
-        print(heldenModel.helden);
+        //print("Helden:")
+        //print(heldenModel.helden);
     }
 
 }

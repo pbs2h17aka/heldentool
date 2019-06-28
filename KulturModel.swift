@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
+// Klasse zur Verwaltung der Kulturen in der Core Data
 class KulturModel {
     
     static let item = KulturModel()
@@ -24,12 +25,14 @@ class KulturModel {
         persistentContainer = appDelegate.persistentContainer
     }
     
+    // Methode erstellt neuen Kultur Core Data Eintrag
     func createKultur() -> Kultur
     {
         let kultur =  NSEntityDescription.insertNewObject(forEntityName: "Kultur", into: contentView) as! Kultur
         return kultur
     }
     
+    // Methode liefert alle Kulturen als [Kultur]
     var kulturen : [Kultur] {
         let request : NSFetchRequest <Kultur> = Kultur.fetchRequest()
         
@@ -41,6 +44,7 @@ class KulturModel {
         return kulturen
     }
     
+    // Methode liefert alle Kulturen Namen als [String]
     var kulturenNamen : [String] {
         let request : NSFetchRequest <Kultur> = Kultur.fetchRequest()
         

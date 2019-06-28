@@ -10,6 +10,7 @@ import Foundation
 import CoreData
 import UIKit
 
+// Klasse zur Verwaltung der Professionen in der Core Data
 class ProfessionModel {
     
     static let item = ProfessionModel()
@@ -24,12 +25,14 @@ class ProfessionModel {
         persistentContainer = appDelegate.persistentContainer
     }
     
+    // Methode erstellt neuen Profession Core Data Eintrag
     func createProfession() -> Profession
     {
         let profession =  NSEntityDescription.insertNewObject(forEntityName: "Profession", into: contentView) as! Profession
         return profession
     }
     
+    // Methode liefert alle Professionen als [Profession]
     var professionen : [Profession] {
         let request : NSFetchRequest <Profession> = Profession.fetchRequest()
         
@@ -41,7 +44,7 @@ class ProfessionModel {
         return professionen
     }
     
-    
+    // Methode liefert alls Profession Namen als [String]
     var professionenNamen : [String] {
         let request : NSFetchRequest <Profession> = Profession.fetchRequest()
         
