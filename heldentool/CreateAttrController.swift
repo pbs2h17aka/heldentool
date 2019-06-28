@@ -31,40 +31,44 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        
-        
-        /*
-         switch held.class {
-         case: magier {
-            if(held.gender == männlich){
+        /* Aktivieren Sobald der Held erschaffen wurde
+         
+         hpLabel.text = held.leben
+         aspLabel.text = held.magie
+         karmaLabel.text = held.karma
+         nameLabel.text = held.name
+         
+        switch held.profession {
+        case: zauberer {
+            if(held.geschlecht == männlich){
                 portrait = UIImage(named: "Magier")!
             }
             else{
                 portrait = UIImage(named: "Magierin")!
             }
             case: priester {
-                if(held.gender == männlich){
+                if(held.geschlecht == männlich){
                     portrait = UIImage(named: "Priester")!
                 }
                 else{
                     portrait = UIImage(named: "Priesterin")!
                 }
             }
-            case: magier {
-                if(held.gender == männlich){
+            case: krieger {
+                if(held.geschlecht == männlich){
                     portrait = UIImage(named: "Krieger")!
-            }
+                }
                 else{
                     portrait = UIImage(named: "Kriegerin")!
                 }
-            case: magier {
-                if(held.gender == männlich){
-                    portrait = UIImage(named: "Streuner")!
+                case: streuner {
+                    if(held.geschlecht == männlich){
+                        portrait = UIImage(named: "Streuner")!
+                    }
+                    else{
+                        portrait = UIImage(named: "Streunerin")!
+                    }
                 }
-                else{
-                portrait = UIImage(named: "Streunerin")!
-                }
-         }
          */
          // Sets our Labels
          portraitView.image = portrait
