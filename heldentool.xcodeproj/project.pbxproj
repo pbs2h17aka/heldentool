@@ -29,6 +29,7 @@
 		22A4009C22C5F94F009B295D /* Held+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4009A22C5F94F009B295D /* Held+CoreDataProperties.swift */; };
 		22A4009E22C61717009B295D /* SkillTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4009D22C61717009B295D /* SkillTableController.swift */; };
 		22A400A022C617BE009B295D /* ShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4009F22C617BE009B295D /* ShowDataViewController.swift */; };
+		22A400A222C61D7D009B295D /* SharedItem.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A400A122C61D7D009B295D /* SharedItem.swift */; };
 		AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2622B3957400821886 /* CreateAllgController.swift */; };
 		AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2822B3AB4300821886 /* CreateAttrController.swift */; };
 /* End PBXBuildFile section */
@@ -79,6 +80,7 @@
 		22A4009A22C5F94F009B295D /* Held+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Held+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		22A4009D22C61717009B295D /* SkillTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableController.swift; sourceTree = "<group>"; };
 		22A4009F22C617BE009B295D /* ShowDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataViewController.swift; sourceTree = "<group>"; };
+		22A400A122C61D7D009B295D /* SharedItem.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SharedItem.swift; sourceTree = "<group>"; };
 		AE822C2622B3957400821886 /* CreateAllgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllgController.swift; sourceTree = "<group>"; };
 		AE822C2822B3AB4300821886 /* CreateAttrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAttrController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -145,6 +147,7 @@
 			children = (
 				222D43412297F8360090C888 /* AppDelegate.swift */,
 				222D43432297F8360090C888 /* ViewController.swift */,
+				22A400A122C61D7D009B295D /* SharedItem.swift */,
 				AE822C2622B3957400821886 /* CreateAllgController.swift */,
 				AE822C2822B3AB4300821886 /* CreateAttrController.swift */,
 				222D43452297F8360090C888 /* Main.storyboard */,
@@ -316,6 +319,7 @@
 				2250C64622B383410072A5D2 /* Profession+CoreDataProperties.swift in Sources */,
 				22A4009822C5F871009B295D /* HeldenModel.swift in Sources */,
 				222D43422297F8360090C888 /* AppDelegate.swift in Sources */,
+				22A400A222C61D7D009B295D /* SharedItem.swift in Sources */,
 				2250C64822B3AD3B0072A5D2 /* RasseModel.swift in Sources */,
 				22A400A022C617BE009B295D /* ShowDataViewController.swift in Sources */,
 				22A4009E22C61717009B295D /* SkillTableController.swift in Sources */,
