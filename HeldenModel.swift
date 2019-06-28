@@ -1,8 +1,8 @@
 //
-//  RasseModel.swift
+//  HeldenModel.swift
 //  heldentool
 //
-//  Created by Christian Karrasch / PBS2H17A on 6/14/19.
+//  Created by Christian Karrasch / PBS2H17A on 6/28/19.
 //  Copyright © 2019 Christian Karrasch / PBS2H17A. All rights reserved.
 //
 
@@ -10,9 +10,9 @@ import Foundation
 import CoreData
 import UIKit
 
-class RasseModel {
+class HeldenModel {
     
-    static let item = RasseModel()
+    static let item = HeldenModel()
     
     private let persistentContainer : NSPersistentContainer
     private var contentView : NSManagedObjectContext {
@@ -23,37 +23,38 @@ class RasseModel {
         let appDelegate = UIApplication.shared.delegate as! AppDelegate
         persistentContainer = appDelegate.persistentContainer
     }
-
-    func createRasse() -> Rasse
+    
+    func createHeld() -> Held
     {
-        let rasse =  NSEntityDescription.insertNewObject(forEntityName: "Rasse", into: contentView) as! Rasse
-        return rasse
+        let held =  NSEntityDescription.insertNewObject(forEntityName: "Held", into: contentView) as! Held
+        return held
     }
     
-    var rassen : [Rasse] {
-        let request : NSFetchRequest <Rasse> = Rasse.fetchRequest()
+    var helden : [Held] {
+        let request : NSFetchRequest <Held> = Held.fetchRequest()
         
         let sortDescriptor = NSSortDescriptor(key:"name",ascending:true)
         request.sortDescriptors=[sortDescriptor]
         
-        let rassen = try! contentView.fetch(request)
+        let helden = try! contentView.fetch(request)
         
-        return rassen
+        return helden
     }
     
-    var rassenNamen : [String] {
-        let request : NSFetchRequest <Rasse> = Rasse.fetchRequest()
+    var heldenNamen : [String] {
+        let request : NSFetchRequest <Held> = Held.fetchRequest()
         
         let sortDescriptor = NSSortDescriptor(key:"name",ascending:true)
         request.sortDescriptors=[sortDescriptor]
         
-        let rassen = try! contentView.fetch(request)
+        let helden = try! contentView.fetch(request)
         
         var namen : [String] = []
-        for r in rassen {
-            namen.append(r.name!)
+        for h in helden {
+            namen.append(h.name!)
         }
         
         return namen
     }
 }
+

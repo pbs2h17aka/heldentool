@@ -17,13 +17,18 @@
 		222D43652297F8370090C888 /* heldentoolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43642297F8370090C888 /* heldentoolUITests.swift */; };
 		222D43742297FF680090C888 /* Rasse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */; };
 		222D43752297FF680090C888 /* Rasse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */; };
-		AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2622B3957400821886 /* CreateAllgController.swift */; };
-		AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2822B3AB4300821886 /* CreateAttrController.swift */; };
-		2250C64322B383410072A5D2 /* Kultur+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C63F22B383410072A5D2 /* Kultur+CoreDataClass.swift */; };
-		2250C64422B383410072A5D2 /* Kultur+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64022B383410072A5D2 /* Kultur+CoreDataProperties.swift */; };
 		2250C64522B383410072A5D2 /* Profession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */; };
 		2250C64622B383410072A5D2 /* Profession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */; };
 		2250C64822B3AD3B0072A5D2 /* RasseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64722B3AD3B0072A5D2 /* RasseModel.swift */; };
+		22A4008C22C5E5DE009B295D /* KulturModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4008B22C5E5DE009B295D /* KulturModel.swift */; };
+		22A4008F22C5E97C009B295D /* Kultur+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4008D22C5E97C009B295D /* Kultur+CoreDataClass.swift */; };
+		22A4009022C5E97C009B295D /* Kultur+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4008E22C5E97C009B295D /* Kultur+CoreDataProperties.swift */; };
+		22A4009222C5EA3E009B295D /* ProfessionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4009122C5EA3E009B295D /* ProfessionModel.swift */; };
+		22A4009822C5F871009B295D /* HeldenModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4009722C5F871009B295D /* HeldenModel.swift */; };
+		22A4009B22C5F94F009B295D /* Held+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4009922C5F94F009B295D /* Held+CoreDataClass.swift */; };
+		22A4009C22C5F94F009B295D /* Held+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 22A4009A22C5F94F009B295D /* Held+CoreDataProperties.swift */; };
+		AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2622B3957400821886 /* CreateAllgController.swift */; };
+		AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2822B3AB4300821886 /* CreateAttrController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,13 +65,18 @@
 		222D43662297F8370090C888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rasse+CoreDataClass.swift"; sourceTree = "<group>"; };
 		222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rasse+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AE822C2622B3957400821886 /* CreateAllgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllgController.swift; sourceTree = "<group>"; };
-		AE822C2822B3AB4300821886 /* CreateAttrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAttrController.swift; sourceTree = "<group>"; };
-		2250C63F22B383410072A5D2 /* Kultur+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kultur+CoreDataClass.swift"; sourceTree = "<group>"; };
-		2250C64022B383410072A5D2 /* Kultur+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kultur+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profession+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profession+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2250C64722B3AD3B0072A5D2 /* RasseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasseModel.swift; sourceTree = "<group>"; };
+		22A4008B22C5E5DE009B295D /* KulturModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KulturModel.swift; sourceTree = "<group>"; };
+		22A4008D22C5E97C009B295D /* Kultur+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kultur+CoreDataClass.swift"; sourceTree = "<group>"; };
+		22A4008E22C5E97C009B295D /* Kultur+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kultur+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		22A4009122C5EA3E009B295D /* ProfessionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfessionModel.swift; sourceTree = "<group>"; };
+		22A4009722C5F871009B295D /* HeldenModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeldenModel.swift; sourceTree = "<group>"; };
+		22A4009922C5F94F009B295D /* Held+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Held+CoreDataClass.swift"; sourceTree = "<group>"; };
+		22A4009A22C5F94F009B295D /* Held+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Held+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		AE822C2622B3957400821886 /* CreateAllgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllgController.swift; sourceTree = "<group>"; };
+		AE822C2822B3AB4300821886 /* CreateAttrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAttrController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -97,13 +107,18 @@
 		222D43352297F8360090C888 = {
 			isa = PBXGroup;
 			children = (
-				2250C63F22B383410072A5D2 /* Kultur+CoreDataClass.swift */,
-				2250C64022B383410072A5D2 /* Kultur+CoreDataProperties.swift */,
+				22A4009922C5F94F009B295D /* Held+CoreDataClass.swift */,
+				22A4009A22C5F94F009B295D /* Held+CoreDataProperties.swift */,
+				22A4009722C5F871009B295D /* HeldenModel.swift */,
+				22A4008D22C5E97C009B295D /* Kultur+CoreDataClass.swift */,
+				22A4008E22C5E97C009B295D /* Kultur+CoreDataProperties.swift */,
+				22A4009122C5EA3E009B295D /* ProfessionModel.swift */,
 				2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */,
 				2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */,
 				222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */,
 				2250C64722B3AD3B0072A5D2 /* RasseModel.swift */,
 				222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */,
+				22A4008B22C5E5DE009B295D /* KulturModel.swift */,
 				222D43402297F8360090C888 /* heldentool */,
 				222D43582297F8370090C888 /* heldentoolTests */,
 				222D43632297F8370090C888 /* heldentoolUITests */,
@@ -287,17 +302,22 @@
 			buildActionMask = 2147483647;
 			files = (
 				AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */,
+				22A4009222C5EA3E009B295D /* ProfessionModel.swift in Sources */,
 				222D43752297FF680090C888 /* Rasse+CoreDataProperties.swift in Sources */,
 				222D43442297F8360090C888 /* ViewController.swift in Sources */,
-				2250C64322B383410072A5D2 /* Kultur+CoreDataClass.swift in Sources */,
-				2250C64422B383410072A5D2 /* Kultur+CoreDataProperties.swift in Sources */,
+				22A4009B22C5F94F009B295D /* Held+CoreDataClass.swift in Sources */,
+				22A4008C22C5E5DE009B295D /* KulturModel.swift in Sources */,
 				2250C64622B383410072A5D2 /* Profession+CoreDataProperties.swift in Sources */,
+				22A4009822C5F871009B295D /* HeldenModel.swift in Sources */,
 				222D43422297F8360090C888 /* AppDelegate.swift in Sources */,
 				2250C64822B3AD3B0072A5D2 /* RasseModel.swift in Sources */,
 				2250C64522B383410072A5D2 /* Profession+CoreDataClass.swift in Sources */,
+				22A4008F22C5E97C009B295D /* Kultur+CoreDataClass.swift in Sources */,
 				222D43742297FF680090C888 /* Rasse+CoreDataClass.swift in Sources */,
 				222D434A2297F8360090C888 /* heldentool.xcdatamodeld in Sources */,
+				22A4009022C5E97C009B295D /* Kultur+CoreDataProperties.swift in Sources */,
 				AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */,
+				22A4009C22C5F94F009B295D /* Held+CoreDataProperties.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

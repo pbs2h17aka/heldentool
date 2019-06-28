@@ -18,6 +18,9 @@ UITableViewDelegate, UITableViewDataSource {
     
     // Core Data Model
     let rasseModel = RasseModel.item
+    let kulturModel = KulturModel.item
+    let professionModel = ProfessionModel.item
+    let heldenModel = HeldenModel.item
     
     var alleRassen : [RassenDaten] = Array()
     var alleKulturen : [KulturDaten] = Array()
@@ -97,6 +100,7 @@ UITableViewDelegate, UITableViewDataSource {
         super.viewDidLoad()
         logo.image = imageLogo
         self.loadBaseData()
+        self.createDummyHeroes()
     }
 
     // Methode um den Stammdaten JSON abzufragen
@@ -134,7 +138,7 @@ UITableViewDelegate, UITableViewDataSource {
             let stammDaten = try? JSONDecoder().decode(AlleDaten.self, from: data!)
             
             if stammDaten == nil {
-                print("Error: Couldn't decode data into Stammdaten")
+                print("Fehler: Stammdaten konnten nicht verarbeitet werden")
             }
             else
             {
@@ -149,7 +153,6 @@ UITableViewDelegate, UITableViewDataSource {
                 
                 
                 for r in alleRassen {
-                    
                     // Übertragung der Rassen in die Core Data
                     let rasse = rasseModel.createRasse()
                     rasse.name = r.name
@@ -163,8 +166,48 @@ UITableViewDelegate, UITableViewDataSource {
                 }
                 
                 
+                for k in alleKulturen {
+                    // Übertragung der Kulturen in die Core Data
+                    let kultur = kulturModel.createKultur()
+                    kultur.name = k.name
+                    kultur.waffen = k.waffen
+                    kultur.magie = k.magie
+                    kultur.wunder = k.wunder
+                    kultur.gesellschaft = k.gesellschaft
+                    kultur.wissen = k.wissen
+                    kultur.handwerk = k.handwerk
+                    kultur.medizin = k.medizin
+                    kultur.wildnis = k.wildnis
+                    kultur.heimlichkeit = k.heimlichkeit
+                    kultur.athletik = k.athletik
+                }
                 
-                print(rasseModel.rassen)
+                
+                for p in alleProfessionen {
+                    // Übertragung der Professionen in die Core Data
+                    let profession = professionModel.createProfession()
+                    profession.name = p.name
+                    profession.waffen = p.waffen
+                    profession.magie = p.magie
+                    profession.wunder = p.wunder
+                    profession.gesellschaft = p.gesellschaft
+                    profession.wissen = p.wissen
+                    profession.handwerk = p.handwerk
+                    profession.medizin = p.medizin
+                    profession.wildnis = p.wildnis
+                    profession.heimlichkeit = p.heimlichkeit
+                    profession.athletik = p.athletik
+                }
+                
+                // Ausgabe der Stammdaten aus der Core Data
+                print("Stammdaten aus der Core Data")
+                print("Rassen:")
+                print(rasseModel.rassenNamen)
+                print("Kulturen:")
+                print(kulturModel.kulturenNamen)
+                print("Professionen")
+                print(professionModel.professionenNamen)
+               
                 
                 //DispatchQueue.main.async {
                 //Main Thread die Oberfläche aktualisieren lassen, z.B.:
@@ -174,9 +217,11 @@ UITableViewDelegate, UITableViewDataSource {
 
         }
         else {
-            print("nichts erhalten")
+            print("Fehler: Keine Stammdaten erhalten.")
         }
         
+        
+    
         
     
     }
@@ -184,6 +229,123 @@ UITableViewDelegate, UITableViewDataSource {
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    
+    // Methode zum Erstellen von Dummy Helden
+    func createDummyHeroes() {
+        
+        // Held Alara Delazar, Magierin
+        let h1 = heldenModel.createHeld();
+        h1.astral = 35
+        h1.athletik = 10
+        h1.charisman = 18
+        h1.fingerfertigkeit = 16
+        h1.gesellschaft = 12
+        h1.geschlecht = 0
+        h1.gewandheit = 20
+        h1.handwerk = 13
+        h1.heimlichkeit = 15
+        h1.intuition = 13
+        h1.karma = 0
+        h1.klugheit = 17
+        h1.kultur = "Suedlaender"
+        h1.leben = 28
+        h1.magie = 20
+        h1.medizin = 15
+        h1.mut = 14
+        h1.name = "Magistra Alara Delazar"
+        h1.profession = "Zauberer"
+        h1.rasse = "Mensch"
+        h1.waffen = 8
+        h1.wildnis = 10
+        h1.wissen = 20
+        h1.wunder = 0
+        
+        // Held Sven Olafson, Krieger
+        let h2 = heldenModel.createHeld();
+        h2.astral = 0
+        h2.athletik = 14
+        h2.charisman = 9
+        h2.fingerfertigkeit = 13
+        h2.gesellschaft = 11
+        h2.geschlecht = 1
+        h2.gewandheit = 12
+        h2.handwerk = 16
+        h2.heimlichkeit = 12
+        h2.intuition = 14
+        h2.karma = 0
+        h2.klugheit = 12
+        h2.kultur = "Nordlaender"
+        h2.leben = 45
+        h2.magie = 0
+        h2.medizin = 5
+        h2.mut = 15
+        h2.name = "Sir Sven Olafson"
+        h2.profession = "Krieger"
+        h2.rasse = "Mensch"
+        h2.waffen = 20
+        h2.wildnis = 14
+        h2.wissen = 12
+        h2.wunder = 0
+        
+        // Held Ardo-jin Ghune, Streuner
+        let h3 = heldenModel.createHeld();
+        h3.astral = 0
+        h3.athletik = 12
+        h3.charisman = 18
+        h3.fingerfertigkeit = 13
+        h3.gesellschaft = 16
+        h3.geschlecht = 1
+        h3.gewandheit = 14
+        h3.handwerk = 12
+        h3.heimlichkeit = 15
+        h3.intuition = 13
+        h3.karma = 0
+        h3.klugheit = 12
+        h3.kultur = "Mittellaender"
+        h3.leben = 35
+        h3.magie = 0
+        h3.medizin = 8
+        h3.mut = 11
+        h3.name = "Ardo-jin Ghune"
+        h3.profession = "Streuner"
+        h3.rasse = "Mensch"
+        h3.waffen = 16
+        h3.wildnis = 20
+        h3.wissen = 13
+        h3.wunder = 0
+        
+        // Held Maya Marbosso, Streunerin
+        let h4 = heldenModel.createHeld();
+        h4.astral = 0
+        h4.athletik = 13
+        h4.charisman = 14
+        h4.fingerfertigkeit = 13
+        h4.gesellschaft = 20
+        h4.geschlecht = 0
+        h4.gewandheit = 14
+        h4.handwerk = 0
+        h4.heimlichkeit = 15
+        h4.intuition = 15
+        h4.karma = 0
+        h4.klugheit = 18
+        h4.kultur = "Mittellaender"
+        h4.leben = 30
+        h4.magie = 0
+        h4.medizin = 0
+        h4.mut = 14
+        h4.name = "Maya Marbosso"
+        h4.profession = "Streunerin"
+        h4.rasse = "Mensch"
+        h4.waffen = 12
+        h4.wildnis = 10
+        h4.wissen = 18
+        h4.wunder = 0
+        
+        // Ausgabe der Dummy Helden aus der Core Data
+        print("Helden:")
+        print(heldenModel.helden);
     }
 
 }
