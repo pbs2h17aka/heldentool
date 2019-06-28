@@ -23,12 +23,15 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     
     //Data
     
-    let attr = ["Mut", "Intuition", "Charisma", "Klugheit", "Fingerfertigkeit", "Gewandheit", "Körperkraft", "Konstitution"]
+    let attr = ["Mut", "Klugheit","Intuition", "Charisma",  "Fingerfertigkeit", "Gewandheit", "Körperkraft"]
     
     let portrait = UIImage(named: "Krieger")
     
+    //default
     override func viewDidLoad() {
         super.viewDidLoad()
+        
+        
         
         /*
          switch held.class {
@@ -62,13 +65,20 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
                 portrait = UIImage(named: "Streunerin")!
                 }
          }
-         
-         // Sets our Labels
-         portraitView = portrait
-         
          */
+         // Sets our Labels
+         portraitView.image = portrait
+ 
     }
-    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        return 1
+    }
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        if( section == 0){
+            return "Attribute"
+        }
+        return "Section \(section)"
+    }
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return attr.count
     }

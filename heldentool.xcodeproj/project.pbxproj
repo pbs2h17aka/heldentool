@@ -17,13 +17,15 @@
 		222D43652297F8370090C888 /* heldentoolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43642297F8370090C888 /* heldentoolUITests.swift */; };
 		222D43742297FF680090C888 /* Rasse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */; };
 		222D43752297FF680090C888 /* Rasse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */; };
-		AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2622B3957400821886 /* CreateAllgController.swift */; };
-		AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2822B3AB4300821886 /* CreateAttrController.swift */; };
 		2250C64322B383410072A5D2 /* Kultur+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C63F22B383410072A5D2 /* Kultur+CoreDataClass.swift */; };
 		2250C64422B383410072A5D2 /* Kultur+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64022B383410072A5D2 /* Kultur+CoreDataProperties.swift */; };
 		2250C64522B383410072A5D2 /* Profession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */; };
 		2250C64622B383410072A5D2 /* Profession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */; };
 		2250C64822B3AD3B0072A5D2 /* RasseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64722B3AD3B0072A5D2 /* RasseModel.swift */; };
+		AE07D40522C60363008EFBD3 /* ShowDataViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE07D40422C60363008EFBD3 /* ShowDataViewController.swift */; };
+		AE07D40922C609A4008EFBD3 /* SkillTableController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE07D40822C609A4008EFBD3 /* SkillTableController.swift */; };
+		AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2622B3957400821886 /* CreateAllgController.swift */; };
+		AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */ = {isa = PBXBuildFile; fileRef = AE822C2822B3AB4300821886 /* CreateAttrController.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -60,13 +62,15 @@
 		222D43662297F8370090C888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rasse+CoreDataClass.swift"; sourceTree = "<group>"; };
 		222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rasse+CoreDataProperties.swift"; sourceTree = "<group>"; };
-		AE822C2622B3957400821886 /* CreateAllgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllgController.swift; sourceTree = "<group>"; };
-		AE822C2822B3AB4300821886 /* CreateAttrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAttrController.swift; sourceTree = "<group>"; };
 		2250C63F22B383410072A5D2 /* Kultur+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kultur+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2250C64022B383410072A5D2 /* Kultur+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Kultur+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profession+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profession+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2250C64722B3AD3B0072A5D2 /* RasseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasseModel.swift; sourceTree = "<group>"; };
+		AE07D40422C60363008EFBD3 /* ShowDataViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowDataViewController.swift; sourceTree = "<group>"; };
+		AE07D40822C609A4008EFBD3 /* SkillTableController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SkillTableController.swift; sourceTree = "<group>"; };
+		AE822C2622B3957400821886 /* CreateAllgController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAllgController.swift; sourceTree = "<group>"; };
+		AE822C2822B3AB4300821886 /* CreateAttrController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateAttrController.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -128,6 +132,8 @@
 				222D43432297F8360090C888 /* ViewController.swift */,
 				AE822C2622B3957400821886 /* CreateAllgController.swift */,
 				AE822C2822B3AB4300821886 /* CreateAttrController.swift */,
+				AE07D40822C609A4008EFBD3 /* SkillTableController.swift */,
+				AE07D40422C60363008EFBD3 /* ShowDataViewController.swift */,
 				222D43452297F8360090C888 /* Main.storyboard */,
 				222D434B2297F8370090C888 /* Assets.xcassets */,
 				222D434D2297F8370090C888 /* LaunchScreen.storyboard */,
@@ -286,6 +292,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				AE07D40922C609A4008EFBD3 /* SkillTableController.swift in Sources */,
 				AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */,
 				222D43752297FF680090C888 /* Rasse+CoreDataProperties.swift in Sources */,
 				222D43442297F8360090C888 /* ViewController.swift in Sources */,
@@ -298,6 +305,7 @@
 				222D43742297FF680090C888 /* Rasse+CoreDataClass.swift in Sources */,
 				222D434A2297F8360090C888 /* heldentool.xcdatamodeld in Sources */,
 				AE822C2722B3957400821886 /* CreateAllgController.swift in Sources */,
+				AE07D40522C60363008EFBD3 /* ShowDataViewController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
