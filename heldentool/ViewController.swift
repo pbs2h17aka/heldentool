@@ -79,7 +79,6 @@ UITableViewDelegate, UITableViewDataSource {
         var alleDaten : StammDaten
     }
     
-    
     // ---------------------------------------------------------------------------------------------------
     let test =  ["Ardo","Borkmeister","Travia","grumbuzki","Festumske"]
     // ---------------------------------------------------------------------------------------------------
@@ -100,9 +99,6 @@ UITableViewDelegate, UITableViewDataSource {
         logo.image = imageLogo
         self.loadBaseData()
         self.createDummyHeroes()
-        
-        print("Gesuchter Held")
-        print(heldenModel.getHeld(name : "Ardo-jin Ghune"))
     }
 
     // Methode um den Stammdaten JSON abzufragen
