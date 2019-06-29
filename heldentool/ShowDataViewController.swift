@@ -8,13 +8,17 @@
 
 import UIKit
 
+// Detailview nach Auswahl eines Helden in der Startview, Anzeige des Heldendokumentes
 class ShowDataViewController: UIViewController, UITableViewDataSource, UITableViewDelegate {
     
-    // TABLE AND VIEW
+    // ausgewählter Held
+    var heldenIndex = 0
+    
+    // Table und View
     @IBOutlet weak var dataTable: UITableView!
     @IBOutlet weak var portraitView: UIImageView!
     
-    // ALL LABELS
+    // Labels
     @IBOutlet weak var lebenLabel: UILabel!
     @IBOutlet weak var magieLabel: UILabel!
     @IBOutlet weak var karmaLabel: UILabel!
@@ -23,12 +27,20 @@ class ShowDataViewController: UIViewController, UITableViewDataSource, UITableVi
     @IBOutlet weak var kulturLabel: UILabel!
     @IBOutlet weak var classLabel: UILabel!
     
-    //SECTIONS
+    // Core Data Model
+    let heldenModel = HeldenModel.item
     
+    // ---------------------------------------------------------------------------------------------------
+    // TABLEVIEW METHODEN
+    
+    // Sektionen
+    // eine Sektion zur Darstellung der Attribute
+    // eine Sektion zur Darstellung der Fertigkeiten
     func numberOfSections(in tableView: UITableView) -> Int {
         return 2
     }
     
+    // Titel der beiden Sektionen
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if(section == 0){
             return "Attribute"
@@ -38,78 +50,114 @@ class ShowDataViewController: UIViewController, UITableViewDataSource, UITableVi
         }
     }
     
-    //ROWS
-    
+    // Reihen
+    // Anzahl ist Abhängig von der Sektion (Attribute oder Fertigkeiten)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         if(section == 0){
-            return 2
+            // Es gibt 7 Helden Attribute
+            return 7
         }
-        return 3
+        // Es gibt 10 Helden Fertigkeiten
+        return 10
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
-         let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
-        cell.textLabel?.text = "Section \(indexPath.section) Row \(indexPath.row)"
-
+        
+        // Bestimmung des ausgewwählten Helden durch übergebenen Index
+        var held : Held
+        held = heldenModel.helden[heldenIndex]
+        
+        let cell = tableView.dequeueReusableCell(withIdentifier: "dataCell", for: indexPath)
+        var text : String
+        
+        // Sektion mit den Attributen
+        if(indexPath.section == 0) {
+            switch indexPath.row {
+                case 0: text = "Charisma: \(held.charisman)"
+                case 1: text = "Fingerfertigkeit: \(held.fingerfertigkeit)"
+                case 2: text = "Gewandheit: \(held.gewandheit)"
+                case 3: text = "Intuition: \(held.intuition)"
+                case 4: text = "Klugheit: \(held.klugheit)"
+                case 5: text = "Körperkraft: \(held.koerperkraft)"
+                case 6: text = "Mut: \(held.mut)"
+                default: text = "yee"
+            }
+        }
+        // Sektion mit den Fertigkeiten
+        else {
+            switch indexPath.row {
+            case 0: text = "Athletik: \(held.athletik)"
+            case 1: text = "Gesellschaft: \(held.gesellschaft)"
+            case 2: text = "Handwerk: \(held.handwerk)"
+            case 3: text = "Heimlichkeit: \(held.heimlichkeit)"
+            case 4: text = "Magie: \(held.magie)"
+            case 5: text = "Medizin: \(held.medizin)"
+            case 6: text = "Waffen: \(held.waffen)"
+            case 7: text = "Wildnis: \(held.wildnis)"
+            case 8: text = "Wissen: \(held.wissen)"
+            case 9: text = "Wunder: \(held.wunder)"
+            default: text = "yee"
+            }
+        }
+        
+        cell.textLabel?.text = text
+        
+        //var yees = Held.entity().attributesByName.enumerated().makeIterator()
+        
         return cell
     }
     
+    // ---------------------------------------------------------------------------------------------------
+    
     override func viewDidLoad() {
         super.viewDidLoad()
-        //SHOWS THE IMAGE
-        portraitView.image = getPortrait()
-        //SETS OUR CUSTOM DATA
-    }
-    // CHOOSES THE CORRECT UIMAGE
-    func getPortrait()->UIImage{
         
-        let portrait = UIImage(named: "Krieger")
-        /* AKTIVATE IF DATA IS AVAILABLE
-         
-        switch held.profession {
-        case: zauberer {
-            if(held.geschlecht == männlich){
-                portrait = UIImage(named: "Magier")!
-            }
-            else{
-                portrait = UIImage(named: "Magierin")!
-            }
-            case: priester {
-                if(held.geschlecht == männlich){
-                    portrait = UIImage(named: "Priester")!
-                }
-                else{
-                    portrait = UIImage(named: "Priesterin")!
-                }
-            }
-            case: krieger {
-                if(held.geschlecht == männlich){
-                    portrait = UIImage(named: "Krieger")!
-                }
-                else{
-                    portrait = UIImage(named: "Kriegerin")!
-                }
-            case: streuner {
-                if(held.geschlecht == männlich){
-                    portrait = UIImage(named: "Streuner")!
-                }
-                else{
-                    portrait = UIImage(named: "Streunerin")!
-                    }
-                }
-                */
-            return portrait!
+        // Bestimmung des ausgewwählten Helden durch übergebenen Index
+        var held : Held
+        held = heldenModel.helden[heldenIndex]
+        
+        // Anzeigen eines Heldenportraits
+        portraitView.image = getPortrait(held : held)
+        
+        // Befüllung des Helden Steckbriefes
+        schreibeSteckbrief(held : held)
     }
-    // SETS OUR CUSTOM DATA
-    func setCustomData()->Void{
-        /*
-        lebenLabel.text = held.leben
-        magieLabel.text = held.magie
-        karmaLabel.text = held.karma
+    
+    // Methode zur Darstellung eines Heldenportraits
+    func getPortrait(held : Held)->UIImage{
+        
+        // Heldenportrait
+        var portrait = UIImage(named: "Krieger")
+        
+        // Abhängigkeit von der Profession, dann vom Geschlecht
+        switch String(held.profession!) {
+            case "Zauberer" :
+                    if(held.geschlecht == 1){portrait = UIImage(named: "Magier")!}
+                    else{portrait = UIImage(named: "Magierin")!}
+            case "Priester" :
+                    if(held.geschlecht == 1){portrait = UIImage(named: "Priester")!}
+                    else{portrait = UIImage(named: "Priesterin")!}
+            case "Krieger" :
+                    if(held.geschlecht == 1){portrait = UIImage(named: "Krieger")!}
+                    else{portrait = UIImage(named: "Kriegerin")!}
+            case "Streuner" :
+                    if(held.geschlecht == 1){portrait = UIImage(named: "Streuner")!}
+                    else{portrait = UIImage(named: "Streunerin")!}
+            default :
+                    print("Fehler beim Laden des Heldenportraits!")
+        }
+        
+        return portrait!
+    }
+    
+    // Methode um Heldensteckbrief zu befüllen
+    func schreibeSteckbrief(held : Held)->Void{
+        lebenLabel.text = String(held.leben)
+        magieLabel.text = String(held.magie)
+        karmaLabel.text = String(held.karma)
         nameLabel.text = held.name
         rasseLabel.text = held.rasse
         kulturLabel.text = held.kultur
         classLabel.text = held.profession
-    */
     }
 }

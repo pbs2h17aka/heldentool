@@ -12,5 +12,4 @@ import CoreData
 
 @objc(Held)
 public class Held: NSManagedObject {
-
 }
