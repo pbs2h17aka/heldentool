@@ -109,9 +109,12 @@ UITableViewDelegate, UITableViewDataSource {
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let heldendokument = segue.destination as? ShowDataViewController
-        //heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section}
-        heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section
+        
+        if(segue.identifier == "openShowHeld") {
+            let heldendokument = segue.destination as? ShowDataViewController
+            //heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section}
+            heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section
+        }
     }
 
     // ---------------------------------------------------------------------------------------------------

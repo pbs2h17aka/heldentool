@@ -8,6 +8,7 @@
 
 import UIKit
 
+// View zur Erstellung eines neuen Helden
 class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
     //ImageViews
@@ -25,73 +26,80 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     
     let attr = ["Mut", "Klugheit","Intuition", "Charisma",  "Fingerfertigkeit", "Gewandheit", "Körperkraft"]
     
-    let portrait = UIImage(named: "Krieger")
+   
     
     //default
     override func viewDidLoad() {
         super.viewDidLoad()
+         
+        hpLabel.text = String(SharedItem.meinHeld.leben)
+        aspLabel.text = String(SharedItem.meinHeld.magie)
+        karmaLabel.text = String(SharedItem.meinHeld.karma)
+        nameLabel.text = SharedItem.meinHeld.name
         
-        /* Aktivieren Sobald der Held erschaffen wurde
+        var portrait = UIImage(named: "Krieger")
          
-         hpLabel.text = held.leben
-         aspLabel.text = held.magie
-         karmaLabel.text = held.karma
-         nameLabel.text = held.name
-         
-        switch held.profession {
-        case: zauberer {
-            if(held.geschlecht == männlich){
-                portrait = UIImage(named: "Magier")!
-            }
-            else{
-                portrait = UIImage(named: "Magierin")!
-            }
-            case: priester {
-                if(held.geschlecht == männlich){
-                    portrait = UIImage(named: "Priester")!
-                }
-                else{
-                    portrait = UIImage(named: "Priesterin")!
-                }
-            }
-            case: krieger {
-                if(held.geschlecht == männlich){
-                    portrait = UIImage(named: "Krieger")!
-                }
-                else{
-                    portrait = UIImage(named: "Kriegerin")!
-                }
-                case: streuner {
-                    if(held.geschlecht == männlich){
-                        portrait = UIImage(named: "Streuner")!
-                    }
-                    else{
-                        portrait = UIImage(named: "Streunerin")!
-                    }
-                }
-         */
-         // Sets our Labels
-         portraitView.image = portrait
+        // Abhängigkeit von der Profession, dann vom Geschlecht
+        switch String(SharedItem.meinHeld.profession) {
+            case "Zauberer" :
+                if(SharedItem.meinHeld.geschlecht == 1){portrait = UIImage(named: "Magier")!}
+                else{portrait = UIImage(named: "Magierin")!}
+            case "Priester" :
+                if(SharedItem.meinHeld.geschlecht == 1){portrait = UIImage(named: "Priester")!}
+                else{portrait = UIImage(named: "Priesterin")!}
+            case "Krieger" :
+                if(SharedItem.meinHeld.geschlecht == 1){portrait = UIImage(named: "Krieger")!}
+                else{portrait = UIImage(named: "Kriegerin")!}
+            case "Streuner" :
+                if(SharedItem.meinHeld.geschlecht == 1){portrait = UIImage(named: "Streuner")!}
+                else{portrait = UIImage(named: "Streunerin")!}
+            default :
+            print("Fehler beim Laden des Heldenportraits!")
+         }
  
+         // Heldenportrait anzeigen
+         portraitView.image = portrait
     }
+    
+    // ---------------------------------------------------------------------------------------------------
+    // TABLEVIEW METHODEN
+    
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         if( section == 0){
             return "Attribute"
         }
         return "Section \(section)"
     }
+    
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         return attr.count
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
+        
         let cell = tableView.dequeueReusableCell(withIdentifier: "attrCell", for: indexPath)
-        cell.textLabel?.text = attr[indexPath.row]
+        let text : String
+        
+        switch indexPath.row {
+        case 0: text = "Charisma: \(SharedItem.meinHeld.charisma)"
+        case 1: text = "Fingerfertigkeit: \(SharedItem.meinHeld.fingerfertigkeit)"
+        case 2: text = "Gewandheit: \(SharedItem.meinHeld.gewandheit)"
+        case 3: text = "Intuition: \(SharedItem.meinHeld.intuition)"
+        case 4: text = "Klugheit: \(SharedItem.meinHeld.klugheit)"
+        case 5: text = "Körperkraft: \(SharedItem.meinHeld.koerperkraft)"
+        case 6: text = "Mut: \(SharedItem.meinHeld.mut)"
+        default: text = "yee"
+        }
+        
+        cell.textLabel?.text = text
+        
         return cell
     }
     
+    // ---------------------------------------------------------------------------------------------------
     
 }
