@@ -155,7 +155,7 @@ class ShowDataViewController: UIViewController, UITableViewDataSource, UITableVi
         lebenLabel.text = String(held.leben)
         magieLabel.text = String(held.magie)
         karmaLabel.text = String(held.karma)
-        nameLabel.text = held.name
+        nameLabel.text = "held.name"
         rasseLabel.text = held.rasse
         kulturLabel.text = held.kultur
         classLabel.text = held.profession

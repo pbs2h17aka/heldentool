@@ -379,13 +379,6 @@
                                 <nil key="textColor"/>
                                 <nil key="highlightedColor"/>
                             </label>
-                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Heldenname" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="Kjz-Co-1YS">
-                                <rect key="frame" x="20" y="291" width="97" height="21"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <fontDescription key="fontDescription" type="system" pointSize="17"/>
-                                <nil key="textColor"/>
-                                <nil key="highlightedColor"/>
-                            </label>
                             <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Rasse" textAlignment="natural" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="8vI-gh-OyS">
                                 <rect key="frame" x="20" y="320" width="46" height="21"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
@@ -426,7 +419,6 @@
                         <outlet property="kulturLabel" destination="T4j-ei-zsz" id="0Gs-yg-nfp"/>
                         <outlet property="lebenLabel" destination="4Ar-SW-yp0" id="vsr-ZU-9uh"/>
                         <outlet property="magieLabel" destination="f1C-NH-zuw" id="27z-UK-Wbc"/>
-                        <outlet property="nameLabel" destination="Kjz-Co-1YS" id="uQM-aV-dCM"/>
                         <outlet property="portraitView" destination="4XJ-Yx-FeE" id="uIY-Ev-vy4"/>
                         <outlet property="rasseLabel" destination="8vI-gh-OyS" id="Xog-Rx-etu"/>
                     </connections>
