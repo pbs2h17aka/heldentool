@@ -325,8 +325,8 @@ UITableViewDelegate, UITableViewDataSource {
                     h.wunder = held.wunder
                 }
                 
+                // Aktualisierung der GUI sobald der Netzwerk Thread fertig ist
                 DispatchQueue.main.async {
-                    //Main Thread die Oberfläche aktualisieren lassen, z.B.:
                     self.tableView.reloadData()
                 }
             }
