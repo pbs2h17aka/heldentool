@@ -79,6 +79,7 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
         return attr.count
     }
     
+    // Methode um Table View mit Helden Attributen aus dem Shared Item zu füllen
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "attrCell", for: indexPath)

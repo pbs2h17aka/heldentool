@@ -239,7 +239,7 @@
                                 <nil key="highlightedColor"/>
                             </label>
                         </subviews>
-                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <color key="backgroundColor" red="0.91579955820000003" green="0.84551030400000005" blue="0.67337745429999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <viewLayoutGuide key="safeArea" id="aqt-9Q-DSO"/>
                     </view>
                     <navigationItem key="navigationItem" title="Attribute" id="Nbq-Nh-0L5">
@@ -327,6 +327,7 @@
                                 <rect key="frame" x="0.0" y="407" width="414" height="462"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
                                 <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <color key="sectionIndexBackgroundColor" red="0.91579955820000003" green="0.84551030400000005" blue="0.67337745429999996" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                 <prototypes>
                                     <tableViewCell clipsSubviews="YES" contentMode="scaleToFill" preservesSuperviewLayoutMargins="YES" selectionStyle="default" indentationWidth="10" reuseIdentifier="dataCell" id="KIQ-GX-2cV">
                                         <rect key="frame" x="0.0" y="28" width="414" height="44"/>
@@ -432,7 +433,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aan-na-Wpp"/>
+        <segue reference="hWa-7G-y33"/>
         <segue reference="Oxq-Jx-5JQ"/>
     </inferredMetricsTieBreakers>
 </document>
