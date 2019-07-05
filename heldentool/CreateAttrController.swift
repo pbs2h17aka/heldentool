@@ -9,12 +9,13 @@
 import UIKit
 
 // View zur Erstellung eines neuen Helden
+// Anzeige des Steckbriefes, Anzeige und Vergabe von Attributspunkten
 class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDataSource {
     
-    //ImageViews
+    // Image View
     @IBOutlet weak var portraitView: UIImageView!
     
-    // OutLabels
+    // Labels
     @IBOutlet weak var nameLabel: UILabel!
     @IBOutlet weak var hpLabel: UILabel!
     @IBOutlet weak var aspLabel: UILabel!
@@ -22,13 +23,7 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     
     @IBOutlet weak var attrTable: UITableView!
     
-    //Data
-    
-    let attr = ["Mut", "Klugheit","Intuition", "Charisma",  "Fingerfertigkeit", "Gewandheit", "Körperkraft"]
-    
-   
-    
-    //default
+    // default
     override func viewDidLoad() {
         super.viewDidLoad()
          
@@ -68,16 +63,18 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
         return 1
     }
     
+    // Methode zum Anzeigen des Titels der Table View
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        if( section == 0){
-            return "Attribute"
-        }
-        return "Section \(section)"
+        return "Attribute"
     }
     
+    // Methode zum Aufbau der benötigten Reihen in der Tableview
+    // Pro Attribut eine Reihe
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return attr.count
+        return 7
     }
+    
+    // Methode um Titel der anzuzeigen
     
     // Methode um Table View mit Helden Attributen aus dem Shared Item zu füllen
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
@@ -102,5 +99,5 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // ---------------------------------------------------------------------------------------------------
-    
+
 }
