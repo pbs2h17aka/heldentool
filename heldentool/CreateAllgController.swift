@@ -41,15 +41,28 @@ class CreateAllgController: UIViewController, UIPickerViewDelegate, UIPickerView
     
     override func viewDidLoad() {
         super.viewDidLoad()
-
+        //Select Box default setzen
+        genderBox.selectedSegmentIndex = 0
+        //Hintergrundfarbe setzen
+        view.backgroundColor = UIColor(red: 233.0/255.0, green: 216.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+        
         // Picker setzen
+        // Rassen Picker
         self.racePicker.delegate = self
         self.racePicker.dataSource = self
+        self.racePicker.selectRow(1, inComponent: 0, animated: true)
+        SharedItem.meinHeld.addRasse(rasse : rasseModel.rassen[1])
+        //Kulturen Picker
         self.culturePicker.delegate = self
         self.culturePicker.dataSource = self
+        self.culturePicker.selectRow(1, inComponent: 0, animated: true)
+        SharedItem.meinHeld.addKultur(kultur : kulturModel.kulturen[1])
+        // Professionen Picker
         self.classPicker.delegate = self
         self.classPicker.dataSource = self
-
+        self.classPicker.selectRow(1, inComponent: 0, animated: true)
+        SharedItem.meinHeld.addProfession(profession : professionModel.professionen[1])
+        
     }
     
     // Pro Picker wird nur eine Komponente benötigt
@@ -106,27 +119,42 @@ class CreateAllgController: UIViewController, UIPickerViewDelegate, UIPickerView
         }
         
         // Debug
-        //print("Rasse")
-        //print(SharedItem.meinHeld.rasse)
-        //print("Kultur")
-        //print(SharedItem.meinHeld.kultur)
-        //print("Profession")
-        //print(SharedItem.meinHeld.profession)
+        // print("Rasse")
+        // print(SharedItem.meinHeld.rasse)
+        // print("Kultur")
+        // print(SharedItem.meinHeld.kultur)
+        // print("Profession")
+        // print(SharedItem.meinHeld.profession)
     }
     
     // Aufruf der nächsten View
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        let vorname = nameView.text
-        let nachname = titleView.text
+        var vorname:String
+        var nachname:String
+        
+  //      Default Werte setzen
+        if(nameView.text == ""){
+            vorname = "VDummy"
+        }
+        else{
+            vorname = nameView.text!
+        }
+        if(titleView.text == ""){
+            nachname = "NDummy"
+        }
+        else{
+            nachname = titleView.text!
+        }
+
         let geschlecht = genderBox.selectedSegmentIndex
         
-        SharedItem.meinHeld.name = String(vorname! + " " + nachname!)
+        SharedItem.meinHeld.name = String(vorname + " " + nachname)
         SharedItem.meinHeld.geschlecht = Int32(geschlecht)
         
         // Debug
-        print("Name:")
-        print(SharedItem.meinHeld.name)
-        print("Geschlecht")
-        print(SharedItem.meinHeld.geschlecht)
+        // print("Name:")
+        // print(SharedItem.meinHeld.name)
+        // print("Geschlecht")
+        // print(SharedItem.meinHeld.geschlecht)
     }
 }

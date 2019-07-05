@@ -77,5 +77,86 @@ class HeldenModel {
         let held = try! contentView.fetch(request)
         return held
     }
+    
+    // Methode um Helden an den Server zu senden
+    func sendeHelden()
+    {
+        // Anlegen eines Dictionarys, welcher den Held durch Schhlüssel - Wert Kombinationen dartstellt
+        let heldenbogen: [String: String] = [   "leben" : String(SharedItem.meinHeld.leben),
+                                                "magie" : String(SharedItem.meinHeld.magie),
+                                                "karma" : String(SharedItem.meinHeld.karma),
+                                                "name" : SharedItem.meinHeld.name,
+                                                "rasse" : SharedItem.meinHeld.rasse,
+                                                "kultur" : SharedItem.meinHeld.kultur,
+                                                "profession" : SharedItem.meinHeld.profession,
+                                                "mut" : String(SharedItem.meinHeld.mut),
+                                                "klugheit" : String(SharedItem.meinHeld.klugheit),
+                                                "intuition" : String(SharedItem.meinHeld.intuition),
+                                                "charisma" : String(SharedItem.meinHeld.charisma),
+                                                "fingerfertigkeit" : String(SharedItem.meinHeld.fingerfertigkeit),
+                                                "gewandheit" : String(SharedItem.meinHeld.gewandheit),
+                                                "koerperkraft" : String(SharedItem.meinHeld.koerperkraft),
+                                                "waffen" : String(SharedItem.meinHeld.waffen),
+                                                "astral" : String(SharedItem.meinHeld.astral),
+                                                "wunder" : String(SharedItem.meinHeld.wunder),
+                                                "gesellschaft" : String(SharedItem.meinHeld.gesellschaft),
+                                                "wissen" : String(SharedItem.meinHeld.wissen),
+                                                "handwerk" : String(SharedItem.meinHeld.handwerk),
+                                                "medizin" : String(SharedItem.meinHeld.medizin),
+                                                "wildnis" : String(SharedItem.meinHeld.wildnis),
+                                                "heimlichkeit" : String(SharedItem.meinHeld.heimlichkeit),
+                                                "athletik" : String(SharedItem.meinHeld.athletik),
+                                                "geschlecht" : String(SharedItem.meinHeld.geschlecht)
+                                            ]
+        
+        // debug
+        print(heldenbogen)
+        
+        // Festlegen der URL des Servers auf dem der HEld gespeichert werden soll
+        // Website an die JSONs zu Testzwecken gesendet werden https://webhook.site
+        // URL muss angepasst werden, da bei jeder Sitzung neu generiert wird
+        let url = URL(string: "https://webhook.site/cd514ba9-c873-43d0-a8f5-1dfbee72ca38")!
+        
+        // Erstellen einer Session
+        let session = URLSession.shared
+        
+        // Erstellen einer Request auf die URL
+        var request = URLRequest(url: url)
+        // Setzen des Request Types auf POST
+        request.httpMethod = "POST"
+        
+        do {
+            // Umwandlung des Heldenbogens in NSDATA und Einfügen in Request Body
+            request.httpBody = try JSONSerialization.data(withJSONObject: heldenbogen, options: .prettyPrinted)
+        } catch let error {
+            print(error.localizedDescription)
+        }
+        
+        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
+        request.addValue("application/json", forHTTPHeaderField: "Accept")
+        
+        //  Erstellen eines Tasks um Request auszuführen
+        let task = session.dataTask(with: request, completionHandler: { data, response, error in
+            
+            guard error == nil else {
+                return
+            }
+            
+            guard let data = data else {
+                return
+            }
+            
+            do {
+                // Erstellen eines JSON aus den NSDATA
+                if let json = try JSONSerialization.jsonObject(with: data, options: .mutableContainers) as? [String: Any] {
+                    print(json)
+                }
+                
+            } catch let error {
+                print(error.localizedDescription)
+            }
+        })
+        task.resume()
+    }
 }
 

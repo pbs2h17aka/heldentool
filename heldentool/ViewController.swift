@@ -18,6 +18,9 @@ UITableViewDelegate, UITableViewDataSource {
     // Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logo: UIImageView!
+    @IBAction func downloadHelden(_ sender: Any) {
+        self.heldenDownload()
+    }
     
     // Core Data Model
     let rasseModel = RasseModel.item
@@ -28,6 +31,7 @@ UITableViewDelegate, UITableViewDataSource {
     var alleRassen : [RassenDaten] = Array()
     var alleKulturen : [KulturDaten] = Array()
     var alleProfessionen : [ProfessionenDaten] = Array()
+    var alleHelden : [HeldenDaten] = Array()
     
     // Structs
     // Rassen
@@ -80,40 +84,72 @@ UITableViewDelegate, UITableViewDataSource {
         var alleDaten : StammDaten
     }
     
+    // Held
+    struct HeldenDaten : Decodable {
+        var astral : Int32
+        var athletik : Int32
+        var charisma : Int32
+        var fingerfertigkeit : Int32
+        var geschlecht : Int32
+        var gesellschaft : Int32
+        var gewandheit : Int32
+        var handwerk : Int32
+        var heimlichkeit : Int32
+        var intuition : Int32
+        var karma : Int32
+        var klugheit : Int32
+        var koerperkraft : Int32
+        var kultur : String
+        var leben : Int32
+        var magie : Int32
+        var medizin : Int32
+        var mut : Int32
+        var name : String
+        var profession : String
+        var rasse : String
+        var waffe : Int32
+        var wildnis : Int32
+        var wissen : Int32
+        var wunder : Int32
+    }
+    struct AlleHelden: Decodable {
+        var alleHelden : [HeldenDaten]
+    }
+    
     
     // ---------------------------------------------------------------------------------------------------
     // TABLEVIEW METHODEN
-    
+ /*
     func numberOfSections(in tableView: UITableView) -> Int {
         // Jeder Held wird in einer eigenen Sektion angezeigt
         return heldenModel.helden.count
     }
-    
+ */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Pro Sektion wird eine Reihe zur Darstellung des Namen benötigt
-        return 1
+        return heldenModel.helden.count
         //return test.count
     }
-    
+ /*
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // Heldenname als Titel jeder Sektion
         return heldenModel.helden[section].name
     }
+  */
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
-        //cell.textLabel?.text = "zum Heldendokument"
-        //let held = heldenModel.helden[indexPath.row]
-        //cell.textLabel?.text = "\(held.rasse!), \(held.kultur!), \(held.profession!)"
+        cell.textLabel?.text = heldenModel.heldenNamen[indexPath.row]
+      //  let held = heldenModel.helden[indexPath.row]
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if(segue.identifier == "openShowHeld") {
+            print("yee")
             let heldendokument = segue.destination as? ShowDataViewController
-            //heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section}
-            heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section
+            heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.row
         }
     }
 
@@ -121,16 +157,22 @@ UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Deaktiviert die Anzeige der leeren Rows
+        tableView.tableFooterView = UIView()
+        
+        // Setzt den Hintergrund der TableView
+        self.tableView.backgroundColor = UIColor(red: 233.0/255.0, green: 216.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+        
         logo.image = imageLogo
-        self.loadBaseData()
-        self.createDummyHeroes()
+        self.loadBaseData(script : "heldentool.php")
+        //self.createDummyHeroes()
     }
 
     // Methode um den Stammdaten JSON abzufragen
-    func loadBaseData(){
+    func loadBaseData(script : String){
         
         //1 Datenquelle definieren:
-        let URLString = "http://pbs2h17aka.web.pb.bib.de/SIA/heldentool.php"
+        let URLString = "http://pbs2h17aka.web.pb.bib.de/SIA/\(script)"
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let searchURL = URL(string: URLString)
         let urlRequest = URLRequest(url: searchURL!)
@@ -142,8 +184,13 @@ UITableViewDelegate, UITableViewDataSource {
             }
             else
             {
-                //das wird ausgeführt, wenn die Daten vollständig geladen wurden
-                self.parseBaseData (data: data!)
+                if(script == "heldentool.php") {
+                    //das wird ausgeführt, wenn die Daten vollständig geladen wurden
+                    self.parseBaseData (data: data!)
+                }
+                else {
+                    self.parseHeldenData(data: data!)
+                }
             }
         })
         
@@ -215,7 +262,7 @@ UITableViewDelegate, UITableViewDataSource {
                     profession.heimlichkeit = p.heimlichkeit
                     profession.athletik = p.athletik
                 }
-                
+
                 // Ausgabe der Stammdaten aus der Core Data
                 //print("Stammdaten aus der Core Data")
                 //print("Rassen:")
@@ -233,9 +280,83 @@ UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // Methode um die Helden in die Core Data zu schreiben
+    func parseHeldenData(data:Data?){
+        // Verarbeitung der Stammdaten wenn vorhanden
+        
+        if data != nil {
+            let heldenListe = try? JSONDecoder().decode(AlleHelden.self, from: data!)
+            
+            if heldenListe == nil {
+                print("Fehler: Helden konnten nicht verarbeitet werden")
+            }
+            else
+            {
+                alleHelden = heldenListe!.alleHelden
+                
+                // Durchlauf aller abgefragten Helden
+                for held in alleHelden {
+                    // Übertragung der Helden in die Core Data
+                    let h = heldenModel.createHeld()
+                    h.astral = held.astral
+                    h.athletik = held.athletik
+                    h.charisma = held.charisma
+                    h.fingerfertigkeit = held.fingerfertigkeit
+                    h.gesellschaft = held.gesellschaft
+                    h.geschlecht = held.geschlecht
+                    h.gewandheit = held.gewandheit
+                    h.handwerk = held.handwerk
+                    h.heimlichkeit = held.heimlichkeit
+                    h.intuition = held.intuition
+                    h.karma = held.karma
+                    h.klugheit = held.klugheit
+                    h.kultur = held.kultur
+                    h.koerperkraft = held.koerperkraft
+                    h.leben = held.leben
+                    h.magie = held.magie
+                    h.medizin = held.medizin
+                    h.mut = held.mut
+                    h.name = held.name
+                    h.profession = held.profession
+                    h.rasse = held.rasse
+                    h.waffen = held.waffe
+                    h.wildnis = held.wildnis
+                    h.wissen = held.wissen
+                    h.wunder = held.wunder
+                }
+                
+                // Aktualisierung der GUI sobald der Netzwerk Thread fertig ist
+                DispatchQueue.main.async {
+                    self.tableView.reloadData()
+                }
+            }
+        }
+            // Fehlermeldung, wenn keine Helden vorhanden sind
+        else {
+            print("Fehler: Keine Helden erhalten.")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
+    }
+    
+    // Methode um bereits erstellte Helden vom Server zu laden
+    func heldenDownload() {
+        print("download")
+        
+        // Abfrage der bisherigen Helde
+        let heldenListe = heldenModel.helden
+        // Löschen der Liste
+        for held in heldenListe {
+            heldenModel.loescheHeld(held: held)
+        }
+        
+        // Erneuern der Heldenliste mit aktuellen Daten
+        self.loadBaseData(script : "helden.php")
+        // View aktualisieren
+        self.tableView.reloadData()
     }
     
     // Methode zum Erstellen von Dummy Helden
@@ -245,7 +366,7 @@ UITableViewDelegate, UITableViewDataSource {
         let h1 = heldenModel.createHeld();
         h1.astral = 35
         h1.athletik = 10
-        h1.charisman = 18
+        h1.charisma = 18
         h1.fingerfertigkeit = 16
         h1.gesellschaft = 12
         h1.geschlecht = 0
@@ -273,7 +394,7 @@ UITableViewDelegate, UITableViewDataSource {
         let h2 = heldenModel.createHeld();
         h2.astral = 0
         h2.athletik = 14
-        h2.charisman = 9
+        h2.charisma = 9
         h2.fingerfertigkeit = 13
         h2.gesellschaft = 11
         h2.geschlecht = 1
@@ -301,7 +422,7 @@ UITableViewDelegate, UITableViewDataSource {
         let h3 = heldenModel.createHeld();
         h3.astral = 0
         h3.athletik = 12
-        h3.charisman = 18
+        h3.charisma = 18
         h3.fingerfertigkeit = 13
         h3.gesellschaft = 16
         h3.geschlecht = 1
@@ -329,7 +450,7 @@ UITableViewDelegate, UITableViewDataSource {
         let h4 = heldenModel.createHeld();
         h4.astral = 0
         h4.athletik = 13
-        h4.charisman = 14
+        h4.charisma = 14
         h4.fingerfertigkeit = 13
         h4.gesellschaft = 20
         h4.geschlecht = 0

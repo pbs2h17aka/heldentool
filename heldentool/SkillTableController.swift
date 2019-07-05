@@ -11,8 +11,13 @@ import UIKit
 // View zur Erstellung eines neuen Helden
 // Anzeige und Vergabe von Fertigkeitspunkten
 class SkillTableController: UITableViewController {
+    
+    // Core Data Model
+    let heldenModel = HeldenModel.item
 
     override func viewDidLoad() {
+        tableView.tableFooterView = UIView()
+        
         super.viewDidLoad()
     }
     
@@ -25,7 +30,11 @@ class SkillTableController: UITableViewController {
     
     // Methode zum Anzeigen des Titels der Table View
     override func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Fertigkeiten"
+
+        // Setzt den Hintergrund der TableView
+        tableView.backgroundColor = UIColor(red: 233.0/255.0, green: 216.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+        
+        return "Attribute"
     }
     
     // Methode zum Aufbau der benötigten Reihen in der Tableview
@@ -62,6 +71,7 @@ class SkillTableController: UITableViewController {
     
     // Speichern des neuen Helden in der Core Data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        heldenModel.sendeHelden()
         SharedItem.meinHeld.speicherHelden()
     }
 
