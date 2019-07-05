@@ -339,7 +339,7 @@ UITableViewDelegate, UITableViewDataSource {
     
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
-        // Dispose of any resources that can be recreated.
+        // Dispose of any resources that can be recreated
     }
     
     // Methode um bereits erstellte Helden vom Server zu laden
