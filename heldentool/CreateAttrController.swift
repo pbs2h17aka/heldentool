@@ -66,10 +66,6 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
-    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        
-        return attr.count
-    }
     
     // Methode zum Anzeigen des Titels der Table View
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {

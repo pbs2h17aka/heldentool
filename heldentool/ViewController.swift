@@ -143,8 +143,9 @@ UITableViewDelegate, UITableViewDataSource {
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if(segue.identifier == "openShowHeld") {
+            print("yee")
             let heldendokument = segue.destination as? ShowDataViewController
-            heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section
+            heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.row
         }
     }
 
@@ -160,7 +161,7 @@ UITableViewDelegate, UITableViewDataSource {
         
         logo.image = imageLogo
         self.loadBaseData(script : "heldentool.php")
-        //self.createDummyHeroes()
+        self.createDummyHeroes()
     }
 
     // Methode um den Stammdaten JSON abzufragen
@@ -336,7 +337,7 @@ UITableViewDelegate, UITableViewDataSource {
     }
     
     // Methode zum Erstellen von Dummy Helden
-    /*func createDummyHeroes() {
+    func createDummyHeroes() {
         
         // Held Alara Delazar, Magierin
         let h1 = heldenModel.createHeld();
@@ -453,7 +454,7 @@ UITableViewDelegate, UITableViewDataSource {
         // Ausgabe der Dummy Helden aus der Core Data
         //print("Helden:")
         //print(heldenModel.helden);
-    }*/
+    }
 
 }
 
