@@ -8,6 +8,7 @@
 
 import UIKit
 
+// Startview, App Logo und Übersicht der verfügbaren Helden
 class ViewController: UIViewController,
 UITableViewDelegate, UITableViewDataSource {
     
@@ -81,28 +82,48 @@ UITableViewDelegate, UITableViewDataSource {
     
     
     // ---------------------------------------------------------------------------------------------------
-    let test =  ["Ardo","Borkmeister","Travia","grumbuzki","Festumske"]
-    // ---------------------------------------------------------------------------------------------------
+    // TABLEVIEW METHODEN
+    
+    func numberOfSections(in tableView: UITableView) -> Int {
+        // Jeder Held wird in einer eigenen Sektion angezeigt
+        return heldenModel.helden.count
+    }
     
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
-        return test.count
+        // Pro Sektion wird eine Reihe zur Darstellung des Namen benötigt
+        return 1
+        //return test.count
+    }
+    
+    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
+        // Heldenname als Titel jeder Sektion
+        return heldenModel.helden[section].name
     }
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
-        cell.textLabel?.text = test[indexPath.row]
+        //cell.textLabel?.text = "zum Heldendokument"
+        //let held = heldenModel.helden[indexPath.row]
+        //cell.textLabel?.text = "\(held.rasse!), \(held.kultur!), \(held.profession!)"
         return cell
     }
+    
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        
+        if(segue.identifier == "openShowHeld") {
+            let heldendokument = segue.destination as? ShowDataViewController
+            //heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section}
+            heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section
+        }
+    }
 
+    // ---------------------------------------------------------------------------------------------------
 
     override func viewDidLoad() {
         super.viewDidLoad()
         logo.image = imageLogo
         self.loadBaseData()
         self.createDummyHeroes()
-        
-        print("Gesuchter Held")
-        print(heldenModel.getHeld(name : "Ardo-jin Ghune"))
     }
 
     // Methode um den Stammdaten JSON abzufragen
@@ -235,6 +256,7 @@ UITableViewDelegate, UITableViewDataSource {
         h1.karma = 0
         h1.klugheit = 17
         h1.kultur = "Suedlaender"
+        h1.koerperkraft = 9
         h1.leben = 28
         h1.magie = 20
         h1.medizin = 15
@@ -262,6 +284,7 @@ UITableViewDelegate, UITableViewDataSource {
         h2.karma = 0
         h2.klugheit = 12
         h2.kultur = "Nordlaender"
+        h2.koerperkraft = 19
         h2.leben = 45
         h2.magie = 0
         h2.medizin = 5
@@ -289,6 +312,7 @@ UITableViewDelegate, UITableViewDataSource {
         h3.karma = 0
         h3.klugheit = 12
         h3.kultur = "Mittellaender"
+        h3.koerperkraft = 14
         h3.leben = 35
         h3.magie = 0
         h3.medizin = 8
@@ -316,12 +340,13 @@ UITableViewDelegate, UITableViewDataSource {
         h4.karma = 0
         h4.klugheit = 18
         h4.kultur = "Mittellaender"
+        h4.koerperkraft = 11
         h4.leben = 30
         h4.magie = 0
         h4.medizin = 0
         h4.mut = 14
         h4.name = "Maya Marbosso"
-        h4.profession = "Streunerin"
+        h4.profession = "Streuner"
         h4.rasse = "Mensch"
         h4.waffen = 12
         h4.wildnis = 10
