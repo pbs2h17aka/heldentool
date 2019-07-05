@@ -74,8 +74,6 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
         return 7
     }
     
-    // Methode um Titel der anzuzeigen
-    
     // Methode um Table View mit Helden Attributen aus dem Shared Item zu füllen
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         

@@ -11,6 +11,9 @@ import UIKit
 // View zur Erstellung eines neuen Helden
 // Anzeige und Vergabe von Fertigkeitspunkten
 class SkillTableController: UITableViewController {
+    
+    // Core Data Model
+    let heldenModel = HeldenModel.item
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -62,7 +65,8 @@ class SkillTableController: UITableViewController {
     
     // Speichern des neuen Helden in der Core Data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        SharedItem.meinHeld.speicherHelden()
+        heldenModel.sendeHelden()
+        //SharedItem.meinHeld.speicherHelden()
     }
 
 }

@@ -80,6 +80,35 @@ UITableViewDelegate, UITableViewDataSource {
         var alleDaten : StammDaten
     }
     
+    // Held
+    struct Held : Decodable {
+        var astral : Int32
+        var athletik : Int32
+        var charisma : Int32
+        var fingerfertigkeit : Int32
+        var geschlecht : Int32
+        var gesellschaft : Int32
+        var gewandheit : Int32
+        var handwerk : Int32
+        var heimlichkeit : Int32
+        var intuition : Int32
+        var karma : Int32
+        var klugheit : Int32
+        var koerperkraft : Int32
+        var kultur : String
+        var leben : Int32
+        var magie : Int32
+        var medizin : Int32
+        var mut : Int32
+        var name : String
+        var profession : String
+        var rasse : String
+        var waffen : Int32
+        var wildnis : Int32
+        var wissen : Int32
+        var wunder : Int32
+    }
+    
     
     // ---------------------------------------------------------------------------------------------------
     // TABLEVIEW METHODEN
