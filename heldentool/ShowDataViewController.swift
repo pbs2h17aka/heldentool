@@ -53,6 +53,10 @@ class ShowDataViewController: UIViewController, UITableViewDataSource, UITableVi
     // Reihen
     // Anzahl ist Abhängig von der Sektion (Attribute oder Fertigkeiten)
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        // Setzt den Hintergrund der TableView
+        tableView.backgroundColor = UIColor(red: 233.0/255.0, green: 216.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+        
         if(section == 0){
             // Es gibt 7 Helden Attribute
             return 7
@@ -152,10 +156,10 @@ class ShowDataViewController: UIViewController, UITableViewDataSource, UITableVi
     
     // Methode um Heldensteckbrief zu befüllen
     func schreibeSteckbrief(held : Held)->Void{
+        nameLabel.text = held.name
         lebenLabel.text = String(held.leben)
         magieLabel.text = String(held.magie)
         karmaLabel.text = String(held.karma)
-        //nameLabel.text = held.name
         rasseLabel.text = held.rasse
         kulturLabel.text = held.kultur
         classLabel.text = held.profession

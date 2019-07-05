@@ -26,7 +26,11 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     // default
     override func viewDidLoad() {
         super.viewDidLoad()
-         
+        
+        
+        //Hintergrundfarbe setzen
+        view.backgroundColor = UIColor(red: 233.0/255.0, green: 216.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+
         hpLabel.text = String(SharedItem.meinHeld.leben)
         aspLabel.text = String(SharedItem.meinHeld.magie)
         karmaLabel.text = String(SharedItem.meinHeld.karma)
@@ -62,10 +66,21 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     func numberOfSections(in tableView: UITableView) -> Int {
         return 1
     }
+    func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
+        
+        return attr.count
+    }
     
     // Methode zum Anzeigen des Titels der Table View
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        return "Attribute"
+        
+        // Setzt den Hintergrund der TableView
+        tableView.backgroundColor = UIColor(red: 233.0/255.0, green: 216.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+        
+        if( section == 0){
+            return "Attribute"
+        }
+        return "Section \(section)"
     }
     
     // Methode zum Aufbau der benötigten Reihen in der Tableview

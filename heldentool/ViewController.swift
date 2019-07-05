@@ -115,28 +115,28 @@ UITableViewDelegate, UITableViewDataSource {
     
     // ---------------------------------------------------------------------------------------------------
     // TABLEVIEW METHODEN
-    
+ /*
     func numberOfSections(in tableView: UITableView) -> Int {
         // Jeder Held wird in einer eigenen Sektion angezeigt
         return heldenModel.helden.count
     }
-    
+ */
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Pro Sektion wird eine Reihe zur Darstellung des Namen benötigt
-        return 1
+        return heldenModel.helden.count
         //return test.count
     }
-    
+ /*
     func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
         // Heldenname als Titel jeder Sektion
         return heldenModel.helden[section].name
     }
+  */
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
-        //cell.textLabel?.text = "zum Heldendokument"
-        //let held = heldenModel.helden[indexPath.row]
-        //cell.textLabel?.text = "\(held.rasse!), \(held.kultur!), \(held.profession!)"
+        cell.textLabel?.text = heldenModel.heldenNamen[indexPath.row]
+      //  let held = heldenModel.helden[indexPath.row]
         return cell
     }
     
@@ -144,7 +144,6 @@ UITableViewDelegate, UITableViewDataSource {
         
         if(segue.identifier == "openShowHeld") {
             let heldendokument = segue.destination as? ShowDataViewController
-            //heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section}
             heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.section
         }
     }
@@ -153,6 +152,12 @@ UITableViewDelegate, UITableViewDataSource {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        // Deaktiviert die Anzeige der leeren Rows
+        tableView.tableFooterView = UIView()
+        
+        // Setzt den Hintergrund der TableView
+        self.tableView.backgroundColor = UIColor(red: 233.0/255.0, green: 216.0/255.0, blue: 173.0/255.0, alpha: 1.0)
+        
         logo.image = imageLogo
         self.loadBaseData(script : "heldentool.php")
         //self.createDummyHeroes()
