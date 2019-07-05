@@ -31,6 +31,7 @@ UITableViewDelegate, UITableViewDataSource {
     var alleRassen : [RassenDaten] = Array()
     var alleKulturen : [KulturDaten] = Array()
     var alleProfessionen : [ProfessionenDaten] = Array()
+    var alleHelden : [HeldenDaten] = Array()
     
     // Structs
     // Rassen
@@ -84,7 +85,7 @@ UITableViewDelegate, UITableViewDataSource {
     }
     
     // Held
-    struct Held : Decodable {
+    struct HeldenDaten : Decodable {
         var astral : Int32
         var athletik : Int32
         var charisma : Int32
@@ -106,10 +107,13 @@ UITableViewDelegate, UITableViewDataSource {
         var name : String
         var profession : String
         var rasse : String
-        var waffen : Int32
+        var waffe : Int32
         var wildnis : Int32
         var wissen : Int32
         var wunder : Int32
+    }
+    struct AlleHelden: Decodable {
+        var alleHelden : [HeldenDaten]
     }
     
     
@@ -161,7 +165,7 @@ UITableViewDelegate, UITableViewDataSource {
         
         logo.image = imageLogo
         self.loadBaseData(script : "heldentool.php")
-        self.createDummyHeroes()
+        //self.createDummyHeroes()
     }
 
     // Methode um den Stammdaten JSON abzufragen
@@ -258,7 +262,7 @@ UITableViewDelegate, UITableViewDataSource {
                     profession.heimlichkeit = p.heimlichkeit
                     profession.athletik = p.athletik
                 }
-                
+
                 // Ausgabe der Stammdaten aus der Core Data
                 //print("Stammdaten aus der Core Data")
                 //print("Rassen:")
@@ -279,45 +283,53 @@ UITableViewDelegate, UITableViewDataSource {
     // Methode um die Helden in die Core Data zu schreiben
     func parseHeldenData(data:Data?){
         // Verarbeitung der Stammdaten wenn vorhanden
+        
         if data != nil {
-            let stammDaten = try? JSONDecoder().decode(AlleDaten.self, from: data!)
+            let heldenListe = try? JSONDecoder().decode(AlleHelden.self, from: data!)
             
-            if stammDaten == nil {
-                print("Fehler: Stammdaten konnten nicht verarbeitet werden")
+            if heldenListe == nil {
+                print("Fehler: Helden konnten nicht verarbeitet werden")
             }
             else
             {
-                // Stammdaten selektieren und zur Übertragung in
-                // Core Data vorbereiten
-                alleRassen = stammDaten!.alleDaten.Rassen
-                alleKulturen = stammDaten!.alleDaten.Kulturen
-                alleProfessionen = stammDaten!.alleDaten.Professionen
+                alleHelden = heldenListe!.alleHelden
                 
-                // Durchlauf aller abgefragten assen
-                for r in alleRassen {
-                    // Übertragung der Rassen in die Core Data
-                    let rasse = rasseModel.createRasse()
-                    rasse.name = r.name
-                    rasse.mut = r.mut
-                    rasse.klugheit = r.klugheit
-                    rasse.intuition = r.intuition
-                    rasse.charisma = r.charisma
-                    rasse.fingerfertigkeit = r.fingerfertigkeit
-                    rasse.gewandheit = r.gewandheit
-                    rasse.koerperkraft = r.koerperkraft
+                // Durchlauf aller abgefragten Helden
+                for held in alleHelden {
+                    // Übertragung der Helden in die Core Data
+                    let h = heldenModel.createHeld()
+                    h.astral = held.astral
+                    h.athletik = held.athletik
+                    h.charisma = held.charisma
+                    h.fingerfertigkeit = held.fingerfertigkeit
+                    h.gesellschaft = held.gesellschaft
+                    h.geschlecht = held.geschlecht
+                    h.gewandheit = held.gewandheit
+                    h.handwerk = held.handwerk
+                    h.heimlichkeit = held.heimlichkeit
+                    h.intuition = held.intuition
+                    h.karma = held.karma
+                    h.klugheit = held.klugheit
+                    h.kultur = held.kultur
+                    h.koerperkraft = held.koerperkraft
+                    h.leben = held.leben
+                    h.magie = held.magie
+                    h.medizin = held.medizin
+                    h.mut = held.mut
+                    h.name = held.name
+                    h.profession = held.profession
+                    h.rasse = held.rasse
+                    h.waffen = held.waffe
+                    h.wildnis = held.wildnis
+                    h.wissen = held.wissen
+                    h.wunder = held.wunder
                 }
                 
-    
-                // Ausgabe der Stammdaten aus der Core Data
-                //print("Stammdaten aus der Core Data")
-                //print("Rassen:")
-                //print(rasseModel.rassenNamen)
-                //print("Kulturen:")
-                //print(kulturModel.kulturenNamen)
-                //print("Professionen")
-                //print(professionModel.professionenNamen)
+                DispatchQueue.main.async {
+                    //Main Thread die Oberfläche aktualisieren lassen, z.B.:
+                    self.tableView.reloadData()
+                }
             }
-            
         }
             // Fehlermeldung, wenn keine Helden vorhanden sind
         else {
@@ -332,8 +344,19 @@ UITableViewDelegate, UITableViewDataSource {
     
     // Methode um bereits erstellte Helden vom Server zu laden
     func heldenDownload() {
+        print("download")
+        
+        // Abfrage der bisherigen Helde
+        let heldenListe = heldenModel.helden
+        // Löschen der Liste
+        for held in heldenListe {
+            heldenModel.loescheHeld(held: held)
+        }
+        
+        // Erneuern der Heldenliste mit aktuellen Daten
         self.loadBaseData(script : "helden.php")
-        print("Download der Helden.")
+        // View aktualisieren
+        self.tableView.reloadData()
     }
     
     // Methode zum Erstellen von Dummy Helden

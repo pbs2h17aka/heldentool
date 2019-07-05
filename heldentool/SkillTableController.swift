@@ -72,7 +72,7 @@ class SkillTableController: UITableViewController {
     // Speichern des neuen Helden in der Core Data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         heldenModel.sendeHelden()
-        //SharedItem.meinHeld.speicherHelden()
+        SharedItem.meinHeld.speicherHelden()
     }
 
 }
