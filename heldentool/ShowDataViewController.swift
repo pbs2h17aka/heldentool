@@ -73,7 +73,7 @@ class ShowDataViewController: UIViewController, UITableViewDataSource, UITableVi
         // Sektion mit den Attributen
         if(indexPath.section == 0) {
             switch indexPath.row {
-                case 0: text = "Charisma: \(held.charisman)"
+                case 0: text = "Charisma: \(held.charisma)"
                 case 1: text = "Fingerfertigkeit: \(held.fingerfertigkeit)"
                 case 2: text = "Gewandheit: \(held.gewandheit)"
                 case 3: text = "Intuition: \(held.intuition)"

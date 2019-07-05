@@ -18,6 +18,9 @@ UITableViewDelegate, UITableViewDataSource {
     // Outlets
     @IBOutlet weak var tableView: UITableView!
     @IBOutlet weak var logo: UIImageView!
+    @IBAction func downloadHelden(_ sender: Any) {
+        self.heldenDownload()
+    }
     
     // Core Data Model
     let rasseModel = RasseModel.item
@@ -151,15 +154,15 @@ UITableViewDelegate, UITableViewDataSource {
     override func viewDidLoad() {
         super.viewDidLoad()
         logo.image = imageLogo
-        self.loadBaseData()
-        self.createDummyHeroes()
+        self.loadBaseData(script : "heldentool.php")
+        //self.createDummyHeroes()
     }
 
     // Methode um den Stammdaten JSON abzufragen
-    func loadBaseData(){
+    func loadBaseData(script : String){
         
         //1 Datenquelle definieren:
-        let URLString = "http://pbs2h17aka.web.pb.bib.de/SIA/heldentool.php"
+        let URLString = "http://pbs2h17aka.web.pb.bib.de/SIA/\(script)"
         let session = URLSession(configuration: URLSessionConfiguration.default)
         let searchURL = URL(string: URLString)
         let urlRequest = URLRequest(url: searchURL!)
@@ -171,8 +174,13 @@ UITableViewDelegate, UITableViewDataSource {
             }
             else
             {
-                //das wird ausgeführt, wenn die Daten vollständig geladen wurden
-                self.parseBaseData (data: data!)
+                if(script == "heldentool.php") {
+                    //das wird ausgeführt, wenn die Daten vollständig geladen wurden
+                    self.parseBaseData (data: data!)
+                }
+                else {
+                    self.parseHeldenData(data: data!)
+                }
             }
         })
         
@@ -262,19 +270,74 @@ UITableViewDelegate, UITableViewDataSource {
         }
     }
     
+    // Methode um die Helden in die Core Data zu schreiben
+    func parseHeldenData(data:Data?){
+        // Verarbeitung der Stammdaten wenn vorhanden
+        if data != nil {
+            let stammDaten = try? JSONDecoder().decode(AlleDaten.self, from: data!)
+            
+            if stammDaten == nil {
+                print("Fehler: Stammdaten konnten nicht verarbeitet werden")
+            }
+            else
+            {
+                // Stammdaten selektieren und zur Übertragung in
+                // Core Data vorbereiten
+                alleRassen = stammDaten!.alleDaten.Rassen
+                alleKulturen = stammDaten!.alleDaten.Kulturen
+                alleProfessionen = stammDaten!.alleDaten.Professionen
+                
+                // Durchlauf aller abgefragten assen
+                for r in alleRassen {
+                    // Übertragung der Rassen in die Core Data
+                    let rasse = rasseModel.createRasse()
+                    rasse.name = r.name
+                    rasse.mut = r.mut
+                    rasse.klugheit = r.klugheit
+                    rasse.intuition = r.intuition
+                    rasse.charisma = r.charisma
+                    rasse.fingerfertigkeit = r.fingerfertigkeit
+                    rasse.gewandheit = r.gewandheit
+                    rasse.koerperkraft = r.koerperkraft
+                }
+                
+    
+                // Ausgabe der Stammdaten aus der Core Data
+                //print("Stammdaten aus der Core Data")
+                //print("Rassen:")
+                //print(rasseModel.rassenNamen)
+                //print("Kulturen:")
+                //print(kulturModel.kulturenNamen)
+                //print("Professionen")
+                //print(professionModel.professionenNamen)
+            }
+            
+        }
+            // Fehlermeldung, wenn keine Helden vorhanden sind
+        else {
+            print("Fehler: Keine Helden erhalten.")
+        }
+    }
+    
     override func didReceiveMemoryWarning() {
         super.didReceiveMemoryWarning()
         // Dispose of any resources that can be recreated.
     }
     
+    // Methode um bereits erstellte Helden vom Server zu laden
+    func heldenDownload() {
+        self.loadBaseData(script : "helden.php")
+        print("Download der Helden.")
+    }
+    
     // Methode zum Erstellen von Dummy Helden
-    func createDummyHeroes() {
+    /*func createDummyHeroes() {
         
         // Held Alara Delazar, Magierin
         let h1 = heldenModel.createHeld();
         h1.astral = 35
         h1.athletik = 10
-        h1.charisman = 18
+        h1.charisma = 18
         h1.fingerfertigkeit = 16
         h1.gesellschaft = 12
         h1.geschlecht = 0
@@ -302,7 +365,7 @@ UITableViewDelegate, UITableViewDataSource {
         let h2 = heldenModel.createHeld();
         h2.astral = 0
         h2.athletik = 14
-        h2.charisman = 9
+        h2.charisma = 9
         h2.fingerfertigkeit = 13
         h2.gesellschaft = 11
         h2.geschlecht = 1
@@ -330,7 +393,7 @@ UITableViewDelegate, UITableViewDataSource {
         let h3 = heldenModel.createHeld();
         h3.astral = 0
         h3.athletik = 12
-        h3.charisman = 18
+        h3.charisma = 18
         h3.fingerfertigkeit = 13
         h3.gesellschaft = 16
         h3.geschlecht = 1
@@ -358,7 +421,7 @@ UITableViewDelegate, UITableViewDataSource {
         let h4 = heldenModel.createHeld();
         h4.astral = 0
         h4.athletik = 13
-        h4.charisman = 14
+        h4.charisma = 14
         h4.fingerfertigkeit = 13
         h4.gesellschaft = 20
         h4.geschlecht = 0
@@ -385,7 +448,7 @@ UITableViewDelegate, UITableViewDataSource {
         // Ausgabe der Dummy Helden aus der Core Data
         //print("Helden:")
         //print(heldenModel.helden);
-    }
+    }*/
 
 }
 

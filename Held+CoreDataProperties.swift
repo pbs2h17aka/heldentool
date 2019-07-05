@@ -27,7 +27,7 @@ extension Held {
     @NSManaged public var mut: Int32
     @NSManaged public var klugheit: Int32
     @NSManaged public var intuition: Int32
-    @NSManaged public var charisman: Int32
+    @NSManaged public var charisma: Int32
     @NSManaged public var fingerfertigkeit: Int32
     @NSManaged public var gewandheit: Int32
     @NSManaged public var koerperkraft: Int32

@@ -116,7 +116,7 @@ class SharedItem {
         let h = heldenModel.createHeld();
         h.astral = self.astral
         h.athletik = self.athletik
-        h.charisman = self.charisma
+        h.charisma = self.charisma
         h.fingerfertigkeit = self.fingerfertigkeit
         h.gesellschaft = self.gesellschaft
         h.geschlecht = self.geschlecht

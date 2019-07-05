@@ -70,7 +70,11 @@
                                 <segue destination="QxS-vO-aD8" kind="show" id="hWa-7G-y33"/>
                             </connections>
                         </barButtonItem>
-                        <barButtonItem key="rightBarButtonItem" title="Download Helden" id="bhF-WO-d2J"/>
+                        <barButtonItem key="rightBarButtonItem" title="Download Helden" id="bhF-WO-d2J">
+                            <connections>
+                                <action selector="downloadHelden:" destination="BYZ-38-t0r" id="ifJ-fj-hgj"/>
+                            </connections>
+                        </barButtonItem>
                     </navigationItem>
                     <connections>
                         <outlet property="logo" destination="izX-Le-mMq" id="DlK-RR-oZB"/>
