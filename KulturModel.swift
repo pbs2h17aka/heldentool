@@ -32,6 +32,21 @@ class KulturModel {
         return kultur
     }
     
+    // Methode um eine Kultur aus der Core Data zu löschen
+    func loeschen(kultur : Kultur)
+    {
+        contentView.delete(kultur)
+    }
+    
+    // Methode um alle Kulturen aus der Core Data zu löschen
+    func alleKulturenLoeschen()
+    {
+        for kultur in kulturen
+        {
+            loeschen(kultur : kultur)
+        }
+    }
+    
     // Methode liefert alle Kulturen als [Kultur]
     var kulturen : [Kultur] {
         let request : NSFetchRequest <Kultur> = Kultur.fetchRequest()
@@ -59,6 +74,16 @@ class KulturModel {
         }
         
         return namen
+    }
+    
+    func save() {
+        //assert(Thread.isMainThread)
+        do {
+            try contentView.save()
+        }
+        catch let error {
+            print("Fehler beim Speichern \(error)")
+        }
     }
 }
 

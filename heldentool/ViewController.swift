@@ -165,6 +165,9 @@ UITableViewDelegate, UITableViewDataSource {
         
         logo.image = imageLogo
         self.loadBaseData(script : "heldentool.php")
+        //rasseModel.save()
+        //kulturModel.save()
+        //professionModel.save()
         //self.createDummyHeroes()
     }
 
@@ -215,6 +218,13 @@ UITableViewDelegate, UITableViewDataSource {
                 alleKulturen = stammDaten!.alleDaten.Kulturen
                 alleProfessionen = stammDaten!.alleDaten.Professionen
                 
+                // Löschen der bisherigen Stammdaten aus der Core Data
+                rasseModel.alleRassenLoeschen()
+                kulturModel.alleKulturenLoeschen()
+                professionModel.alleProfessionenLoeschen()
+                
+                // Schreiben der aktuellen Stammdaten in die Core Data
+                
                 // Durchlauf aller abgefragten assen
                 for r in alleRassen {
                     // Übertragung der Rassen in die Core Data
@@ -227,6 +237,7 @@ UITableViewDelegate, UITableViewDataSource {
                     rasse.fingerfertigkeit = r.fingerfertigkeit
                     rasse.gewandheit = r.gewandheit
                     rasse.koerperkraft = r.koerperkraft
+                    rasseModel.save()
                 }
                 
                 // Durchlauf aller abgefragten Kulturen
@@ -244,6 +255,7 @@ UITableViewDelegate, UITableViewDataSource {
                     kultur.wildnis = k.wildnis
                     kultur.heimlichkeit = k.heimlichkeit
                     kultur.athletik = k.athletik
+                    kulturModel.save()
                 }
                 
                 // Durchlauf aller abgefragten Professionen
@@ -261,6 +273,7 @@ UITableViewDelegate, UITableViewDataSource {
                     profession.wildnis = p.wildnis
                     profession.heimlichkeit = p.heimlichkeit
                     profession.athletik = p.athletik
+                    professionModel.save()
                 }
 
                 // Ausgabe der Stammdaten aus der Core Data
@@ -323,6 +336,7 @@ UITableViewDelegate, UITableViewDataSource {
                     h.wildnis = held.wildnis
                     h.wissen = held.wissen
                     h.wunder = held.wunder
+                    heldenModel.save()
                 }
                 
                 // Aktualisierung der GUI sobald der Netzwerk Thread fertig ist

@@ -138,6 +138,7 @@ class SharedItem {
         h.wildnis = self.wildnis
         h.wissen = self.wissen
         h.wunder = self.wunder
+        heldenModel.save()
         
         // Zurücksetzten der Heldenwerte
         self.neuerHeldenbogen()

@@ -32,6 +32,21 @@ class ProfessionModel {
         return profession
     }
     
+    // Methode um eine Profession aus der Core Data zu löschen
+    func loeschen(profession : Profession)
+    {
+        contentView.delete(profession)
+    }
+    
+    // Methode um alle Kulturen aus der Core Data zu löschen
+    func alleProfessionenLoeschen()
+    {
+        for profession in professionen
+        {
+            loeschen(profession : profession)
+        }
+    }
+    
     // Methode liefert alle Professionen als [Profession]
     var professionen : [Profession] {
         let request : NSFetchRequest <Profession> = Profession.fetchRequest()
@@ -59,5 +74,15 @@ class ProfessionModel {
         }
         
         return namen
+    }
+    
+    func save() {
+        //assert(Thread.isMainThread)
+        do {
+            try contentView.save()
+        }
+        catch let error {
+            print("Fehler beim Speichern \(error)")
+        }
     }
 }

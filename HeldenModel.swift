@@ -158,5 +158,15 @@ class HeldenModel {
         })
         task.resume()
     }
+    
+    func save() {
+        //assert(Thread.isMainThread)
+        do {
+            try contentView.save()
+        }
+        catch let error {
+            print("Fehler beim Speichern \(error)")
+        }
+    }
 }
 

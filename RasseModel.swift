@@ -32,6 +32,21 @@ class RasseModel {
         return rasse
     }
     
+    // Methode um eine Rasse aus der Core Data zu löschen
+    func loeschen(rasse : Rasse)
+    {
+        contentView.delete(rasse)
+    }
+    
+    // Methode um alle Rassen aus der Core Data zu löschen
+    func alleRassenLoeschen()
+    {
+        for rasse in rassen
+        {
+            loeschen(rasse : rasse)
+        }
+    }
+    
     // Methode liefert alle Rassen als [Rasse]
     var rassen : [Rasse] {
         let request : NSFetchRequest <Rasse> = Rasse.fetchRequest()
@@ -59,5 +74,15 @@ class RasseModel {
         }
         
         return namen
+    }
+    
+    func save() {
+        //assert(Thread.isMainThread)
+        do {
+            try contentView.save()
+        }
+        catch let error {
+            print("Fehler beim Speichern \(error)")
+        }
     }
 }
