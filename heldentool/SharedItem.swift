@@ -37,13 +37,15 @@ class SharedItem {
     var athletik: Int32
     var geschlecht: Int32
     
+    let bezeichnungen : [String] = ["Charisma", "Fingerfertigkeit", "Gewandheit", "Intuition", "Klugheit", "Körperkraft", "Mut", "Athletik", "Gesellschaft", "Handwerk", "Heimlichkeit", "Magie", "Medizin", "Waffen", "Wildnis", "Wissen", "Wunder"]
+    
     
     static let meinHeld = SharedItem()
     
     private init (  ) {
-        leben = 0
-        magie = 0
-        karma = 0
+        leben = 30
+        magie = 15
+        karma = 15
         name = ""
         rasse = ""
         kultur = ""
@@ -110,6 +112,30 @@ class SharedItem {
         self.athletik += profession.athletik
     }
     
+    // Methode um Werte zu erhalten
+    public func setzeWert(index : Int, wert : Int) {
+        switch index {
+        case 0 : self.charisma = Int32(wert)
+        case 1 : self.fingerfertigkeit = Int32(wert)
+        case 2 : self.gewandheit = Int32(wert)
+        case 3 : self.intuition = Int32(wert)
+        case 4 : self.klugheit = Int32(wert)
+        case 5 : self.koerperkraft = Int32(wert)
+        case 6 : self.mut = Int32(wert)
+        case 7 : self.athletik = Int32(wert)
+        case 8 : self.gesellschaft = Int32(wert)
+        case 9 : self.handwerk = Int32(wert)
+        case 10 : self.heimlichkeit = Int32(wert)
+        case 11 : self.magie = Int32(wert)
+        case 12 : self.medizin = Int32(wert)
+        case 13 : self.waffen = Int32(wert)
+        case 14 : self.wildnis = Int32(wert)
+        case 15 : self.wissen = Int32(wert)
+        case 16 :  self.wunder = Int32(wert)
+        default : print("Fehler beim setzen eines neuen Wertes.")
+        }
+    }
+    
     // Methode speichert neuen Helden in der Core Data
     public func speicherHelden() {
         // neuen Helden anlegen und in Core Data speichern
@@ -174,4 +200,10 @@ class SharedItem {
         athletik = 0
         geschlecht = 0
     }
+    
+    // Methode um Bezeichner für Attribut/Fertigkeit zu erhalten
+    public func zeigeBezeichnung(index : Int) -> String {
+        return bezeichnungen[index]
+    }
+    
 }

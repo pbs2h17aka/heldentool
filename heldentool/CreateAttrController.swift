@@ -60,6 +60,11 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
          portraitView.image = portrait
     }
     
+    // Laden der neuen Werte aus dem Shared Item bevor View neu erscheint
+    override func viewWillAppear(_ animated: Bool) {
+        self.attrTable.reloadData()
+    }
+    
     // ---------------------------------------------------------------------------------------------------
     // TABLEVIEW METHODEN
     
@@ -108,26 +113,20 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
         */
         
         switch indexPath.row {
-        case 0: name.text = "Athletik:"
-        wert.text = String(SharedItem.meinHeld.athletik)
-        case 1: name.text = "Gesellschaft:"
-        wert.text = String(SharedItem.meinHeld.gesellschaft)
-        case 2: name.text = "Handwerk:"
-        wert.text = String(SharedItem.meinHeld.handwerk)
-        case 3: name.text = "Heimlichkeit:"
-        wert.text = String(SharedItem.meinHeld.heimlichkeit)
-        case 4: name.text = "Magie:"
-        wert.text = String(SharedItem.meinHeld.magie)
-        case 5: name.text = "Medizin:"
-        wert.text = String(SharedItem.meinHeld.medizin)
-        case 6: name.text = "Waffen:"
-        wert.text = String(SharedItem.meinHeld.waffen)
-        case 7: name.text = "Wildnis:"
-        wert.text = String(SharedItem.meinHeld.wildnis)
-        case 8: name.text = "Wissen:"
-        wert.text = String(SharedItem.meinHeld.wissen)
-        case 9: name.text = "Wunder:"
-        wert.text = String(SharedItem.meinHeld.wunder)
+        case 0: name.text = "Charisma:"
+        wert.text = String(SharedItem.meinHeld.charisma)
+        case 1: name.text = "Fingerfertigkeit:"
+        wert.text = String(SharedItem.meinHeld.fingerfertigkeit)
+        case 2: name.text = "Gewandheit:"
+        wert.text = String(SharedItem.meinHeld.gewandheit)
+        case 3: name.text = "Intuition:"
+        wert.text = String(SharedItem.meinHeld.intuition)
+        case 4: name.text = "Klugheit:"
+        wert.text = String(SharedItem.meinHeld.klugheit)
+        case 5: name.text = "Körperkraft:"
+        wert.text = String(SharedItem.meinHeld.koerperkraft)
+        case 6: name.text = "Mut:"
+        wert.text = String(SharedItem.meinHeld.mut)
         default: name.text = "yee"
         }
         
@@ -137,5 +136,13 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     }
     
     // ---------------------------------------------------------------------------------------------------
+    
+    // Anpassen der Attribute
+    override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
+        if(segue.identifier == "attrLevel") {
+            let werteLeveln = segue.destination as? LevelPickerViewController
+            werteLeveln!.index = attrTable.indexPathForSelectedRow!.row
+        }
+    }
 
 }

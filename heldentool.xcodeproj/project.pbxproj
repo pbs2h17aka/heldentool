@@ -17,6 +17,7 @@
 		222D43652297F8370090C888 /* heldentoolUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43642297F8370090C888 /* heldentoolUITests.swift */; };
 		222D43742297FF680090C888 /* Rasse+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */; };
 		222D43752297FF680090C888 /* Rasse+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */; };
+		222DE80922D9C2CE00A6D18C /* LevelPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 222DE80822D9C2CE00A6D18C /* LevelPickerViewController.swift */; };
 		2250C64522B383410072A5D2 /* Profession+CoreDataClass.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */; };
 		2250C64622B383410072A5D2 /* Profession+CoreDataProperties.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */; };
 		2250C64822B3AD3B0072A5D2 /* RasseModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 2250C64722B3AD3B0072A5D2 /* RasseModel.swift */; };
@@ -68,6 +69,7 @@
 		222D43662297F8370090C888 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		222D43722297FF680090C888 /* Rasse+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rasse+CoreDataClass.swift"; sourceTree = "<group>"; };
 		222D43732297FF680090C888 /* Rasse+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Rasse+CoreDataProperties.swift"; sourceTree = "<group>"; };
+		222DE80822D9C2CE00A6D18C /* LevelPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LevelPickerViewController.swift; sourceTree = "<group>"; };
 		2250C64122B383410072A5D2 /* Profession+CoreDataClass.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profession+CoreDataClass.swift"; sourceTree = "<group>"; };
 		2250C64222B383410072A5D2 /* Profession+CoreDataProperties.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = "Profession+CoreDataProperties.swift"; sourceTree = "<group>"; };
 		2250C64722B3AD3B0072A5D2 /* RasseModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RasseModel.swift; sourceTree = "<group>"; };
@@ -152,6 +154,7 @@
 				222D43452297F8360090C888 /* Main.storyboard */,
 				AE822C2822B3AB4300821886 /* CreateAttrController.swift */,
 				22A4009D22C61717009B295D /* SkillTableController.swift */,
+				222DE80822D9C2CE00A6D18C /* LevelPickerViewController.swift */,
 				22A4009F22C617BE009B295D /* ShowDataViewController.swift */,
 				222D434B2297F8370090C888 /* Assets.xcassets */,
 				222D434D2297F8370090C888 /* LaunchScreen.storyboard */,
@@ -313,6 +316,7 @@
 				AE822C2922B3AB4300821886 /* CreateAttrController.swift in Sources */,
 				22A4009222C5EA3E009B295D /* ProfessionModel.swift in Sources */,
 				222D43752297FF680090C888 /* Rasse+CoreDataProperties.swift in Sources */,
+				222DE80922D9C2CE00A6D18C /* LevelPickerViewController.swift in Sources */,
 				222D43442297F8360090C888 /* ViewController.swift in Sources */,
 				22A4009B22C5F94F009B295D /* Held+CoreDataClass.swift in Sources */,
 				22A4008C22C5E5DE009B295D /* KulturModel.swift in Sources */,

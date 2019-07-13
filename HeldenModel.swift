@@ -115,7 +115,7 @@ class HeldenModel {
         // Festlegen der URL des Servers auf dem der HEld gespeichert werden soll
         // Website an die JSONs zu Testzwecken gesendet werden https://webhook.site
         // URL muss angepasst werden, da bei jeder Sitzung neu generiert wird
-        let url = URL(string: "https://webhook.site/cd514ba9-c873-43d0-a8f5-1dfbee72ca38")!
+        let url = URL(string: "http://www.webhook.site/93a801be-73c9-4676-b980-942382a80c25")!
         
         // Erstellen einer Session
         let session = URLSession.shared

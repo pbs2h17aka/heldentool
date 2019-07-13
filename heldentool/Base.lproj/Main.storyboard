@@ -200,6 +200,9 @@
                                         </tableViewCellContentView>
                                         <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                         <color key="tintColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                        <connections>
+                                            <segue destination="6MS-l1-eLG" kind="show" identifier="attrLevel" id="r3M-Zk-suS"/>
+                                        </connections>
                                     </tableViewCell>
                                 </prototypes>
                                 <connections>
@@ -284,6 +287,42 @@
             </objects>
             <point key="canvasLocation" x="1456.521739130435" y="-17.410714285714285"/>
         </scene>
+        <!--Level Picker View Controller-->
+        <scene sceneID="P5g-ae-b0Q">
+            <objects>
+                <viewController id="6MS-l1-eLG" customClass="LevelPickerViewController" customModule="heldentool" customModuleProvider="target" sceneMemberID="viewController">
+                    <view key="view" contentMode="scaleToFill" id="jrZ-h0-HSU">
+                        <rect key="frame" x="0.0" y="0.0" width="414" height="896"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="d0a-5B-4qq">
+                                <rect key="frame" x="20" y="83" width="374" height="42"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <fontDescription key="fontDescription" type="system" pointSize="22"/>
+                                <nil key="textColor"/>
+                                <nil key="highlightedColor"/>
+                            </label>
+                            <pickerView contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="v9A-ub-SNe">
+                                <rect key="frame" x="0.0" y="133" width="414" height="554"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                                <connections>
+                                    <outlet property="dataSource" destination="6MS-l1-eLG" id="DpG-nS-VRu"/>
+                                    <outlet property="delegate" destination="6MS-l1-eLG" id="6G2-XE-tac"/>
+                                </connections>
+                            </pickerView>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <viewLayoutGuide key="safeArea" id="jJh-Ij-LR5"/>
+                    </view>
+                    <connections>
+                        <outlet property="nameLabel" destination="d0a-5B-4qq" id="Arc-C8-p56"/>
+                        <outlet property="wertPicker" destination="v9A-ub-SNe" id="QGS-01-tHx"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="APl-Er-aau" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="1932" y="713"/>
+        </scene>
         <!--Fertigkeiten-->
         <scene sceneID="Vyu-eu-Gl3">
             <objects>
@@ -317,6 +356,9 @@
                                     </subviews>
                                 </tableViewCellContentView>
                                 <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                                <connections>
+                                    <segue destination="6MS-l1-eLG" kind="show" identifier="skillLevel" id="6A7-lR-h2C"/>
+                                </connections>
                             </tableViewCell>
                         </prototypes>
                         <connections>
@@ -480,7 +522,7 @@
         </scene>
     </scenes>
     <inferredMetricsTieBreakers>
-        <segue reference="aan-na-Wpp"/>
+        <segue reference="r3M-Zk-suS"/>
         <segue reference="Oxq-Jx-5JQ"/>
     </inferredMetricsTieBreakers>
 </document>

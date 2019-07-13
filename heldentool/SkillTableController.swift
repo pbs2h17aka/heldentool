@@ -21,6 +21,11 @@ class SkillTableController: UITableViewController {
         super.viewDidLoad()
     }
     
+    // Laden der neuen Werte aus dem Shared Item bevor View neu erscheint
+    override func viewWillAppear(_ animated: Bool) {
+        self.tableView.reloadData()
+    }
+    
     // ---------------------------------------------------------------------------------------------------
     // TABLEVIEW METHODEN
 
@@ -98,12 +103,15 @@ class SkillTableController: UITableViewController {
     }
     // ---------------------------------------------------------------------------------------------------
     
+    // Anpassen der Fähigkeiten oder
     // Speichern des neuen Helden in der Core Data
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
-        heldenModel.sendeHelden()
-        SharedItem.meinHeld.speicherHelden()
+        if(segue.identifier == "skillLevel") {
+            let werteLeveln = segue.destination as? LevelPickerViewController
+            werteLeveln!.index = 7 + tableView.indexPathForSelectedRow!.row
+        } else {
+            heldenModel.sendeHelden()
+            SharedItem.meinHeld.speicherHelden()
+        }
     }
-    
-    
-
 }

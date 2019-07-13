@@ -119,35 +119,22 @@ UITableViewDelegate, UITableViewDataSource {
     
     // ---------------------------------------------------------------------------------------------------
     // TABLEVIEW METHODEN
- /*
-    func numberOfSections(in tableView: UITableView) -> Int {
-        // Jeder Held wird in einer eigenen Sektion angezeigt
-        return heldenModel.helden.count
-    }
- */
+
     func tableView(_ tableView: UITableView, numberOfRowsInSection section: Int) -> Int {
         // Pro Sektion wird eine Reihe zur Darstellung des Namen benötigt
         return heldenModel.helden.count
-        //return test.count
     }
- /*
-    func tableView(_ tableView: UITableView, titleForHeaderInSection section: Int) -> String? {
-        // Heldenname als Titel jeder Sektion
-        return heldenModel.helden[section].name
-    }
-  */
+
     
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         let cell = tableView.dequeueReusableCell(withIdentifier: "testCell", for: indexPath)
         cell.textLabel?.text = heldenModel.heldenNamen[indexPath.row]
-      //  let held = heldenModel.helden[indexPath.row]
         return cell
     }
     
     override func prepare(for segue: UIStoryboardSegue, sender: Any?) {
         
         if(segue.identifier == "openShowHeld") {
-            print("yee")
             let heldendokument = segue.destination as? ShowDataViewController
             heldendokument!.heldenIndex = tableView.indexPathForSelectedRow!.row
         }
@@ -165,10 +152,6 @@ UITableViewDelegate, UITableViewDataSource {
         
         logo.image = imageLogo
         self.loadBaseData(script : "heldentool.php")
-        //rasseModel.save()
-        //kulturModel.save()
-        //professionModel.save()
-        //self.createDummyHeroes()
     }
 
     // Methode um den Stammdaten JSON abzufragen
