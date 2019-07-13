@@ -14,66 +14,6 @@ class SkillTableController: UITableViewController {
     
     // Core Data Model
     let heldenModel = HeldenModel.item
-
-    // Klick auf dem Minus Button
-    @IBAction func onMinus(_ sender: UIButton) {
-        let index = sender.tag
-        switch index {
-            case 0:
-                SharedItem.meinHeld.athletik -= 1
-            case 1:
-                SharedItem.meinHeld.gesellschaft -= 1
-            case 2:
-                SharedItem.meinHeld.handwerk -= 1
-            case 3:
-                SharedItem.meinHeld.heimlichkeit -= 1
-            case 4:
-                SharedItem.meinHeld.magie -= 1
-            case 5:
-                SharedItem.meinHeld.medizin -= 1
-            case 6:
-                SharedItem.meinHeld.waffen -= 1
-            case 7:
-                SharedItem.meinHeld.wildnis -= 1
-            case 8:
-                SharedItem.meinHeld.wissen -= 1
-            case 9:
-                SharedItem.meinHeld.wunder -= 1
-            default: print("Fehler in Minus Click Event")
-        }
-        
-        //self.tableView.reloadData()
-    }
-    
-    // Klick auf den Plus Button
-    @IBAction func onPlus(_ sender: UIButton) {
-        let index = sender.tag
-        switch index {
-        case 0:
-            SharedItem.meinHeld.athletik += 1
-        case 1:
-            SharedItem.meinHeld.gesellschaft += 1
-        case 2:
-            SharedItem.meinHeld.handwerk += 1
-        case 3:
-            SharedItem.meinHeld.heimlichkeit += 1
-        case 4:
-            SharedItem.meinHeld.magie += 1
-        case 5:
-            SharedItem.meinHeld.medizin += 1
-        case 6:
-            SharedItem.meinHeld.waffen += 1
-        case 7:
-            SharedItem.meinHeld.wildnis += 1
-        case 8:
-            SharedItem.meinHeld.wissen += 1
-        case 9:
-            SharedItem.meinHeld.wunder += 1
-        default: print("Fehler in Minus Click Event")
-        }
-        
-        //self.tableView.reloadData()
-    }
     
     override func viewDidLoad() {
         tableView.tableFooterView = UIView()
@@ -112,9 +52,6 @@ class SkillTableController: UITableViewController {
         let name = cell.contentView.viewWithTag(1) as! UILabel
         let wert = cell.contentView.viewWithTag(2) as! UILabel
         
-        let minus = cell.contentView.viewWithTag(3) as! UIButton
-        let plus = cell.contentView.viewWithTag(4) as! UIButton
-        
         /*
         switch indexPath.row {
         case 0: text = "Athletik: \(SharedItem.meinHeld.athletik)"
@@ -134,44 +71,24 @@ class SkillTableController: UITableViewController {
         switch indexPath.row {
         case 0: name.text = "Athletik:"
                 wert.text = String(SharedItem.meinHeld.athletik)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 1: name.text = "Gesellschaft:"
                 wert.text = String(SharedItem.meinHeld.gesellschaft)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 2: name.text = "Handwerk:"
                 wert.text = String(SharedItem.meinHeld.handwerk)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 3: name.text = "Heimlichkeit:"
                 wert.text = String(SharedItem.meinHeld.heimlichkeit)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 4: name.text = "Magie:"
                 wert.text = String(SharedItem.meinHeld.magie)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 5: name.text = "Medizin:"
                 wert.text = String(SharedItem.meinHeld.medizin)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 6: name.text = "Waffen:"
                 wert.text = String(SharedItem.meinHeld.waffen)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 7: name.text = "Wildnis:"
                 wert.text = String(SharedItem.meinHeld.wildnis)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 8: name.text = "Wissen:"
                 wert.text = String(SharedItem.meinHeld.wissen)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         case 9: name.text = "Wunder:"
                 wert.text = String(SharedItem.meinHeld.wunder)
-                minus.tag = indexPath.row
-                plus.tag = indexPath.row
         default: name.text = "yee"
         }
         

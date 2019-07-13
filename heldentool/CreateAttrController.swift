@@ -89,8 +89,12 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
     func tableView(_ tableView: UITableView, cellForRowAt indexPath: IndexPath) -> UITableViewCell {
         
         let cell = tableView.dequeueReusableCell(withIdentifier: "attrCell", for: indexPath)
-        let text : String
+        //let text : String
         
+        let name = cell.contentView.viewWithTag(1) as! UILabel
+        let wert = cell.contentView.viewWithTag(2) as! UILabel
+        
+        /*
         switch indexPath.row {
         case 0: text = "Charisma: \(SharedItem.meinHeld.charisma)"
         case 1: text = "Fingerfertigkeit: \(SharedItem.meinHeld.fingerfertigkeit)"
@@ -101,8 +105,33 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
         case 6: text = "Mut: \(SharedItem.meinHeld.mut)"
         default: text = "yee"
         }
+        */
         
-        cell.textLabel?.text = text
+        switch indexPath.row {
+        case 0: name.text = "Athletik:"
+        wert.text = String(SharedItem.meinHeld.athletik)
+        case 1: name.text = "Gesellschaft:"
+        wert.text = String(SharedItem.meinHeld.gesellschaft)
+        case 2: name.text = "Handwerk:"
+        wert.text = String(SharedItem.meinHeld.handwerk)
+        case 3: name.text = "Heimlichkeit:"
+        wert.text = String(SharedItem.meinHeld.heimlichkeit)
+        case 4: name.text = "Magie:"
+        wert.text = String(SharedItem.meinHeld.magie)
+        case 5: name.text = "Medizin:"
+        wert.text = String(SharedItem.meinHeld.medizin)
+        case 6: name.text = "Waffen:"
+        wert.text = String(SharedItem.meinHeld.waffen)
+        case 7: name.text = "Wildnis:"
+        wert.text = String(SharedItem.meinHeld.wildnis)
+        case 8: name.text = "Wissen:"
+        wert.text = String(SharedItem.meinHeld.wissen)
+        case 9: name.text = "Wunder:"
+        wert.text = String(SharedItem.meinHeld.wunder)
+        default: name.text = "yee"
+        }
+        
+        //ell.textLabel?.text = text
         
         return cell
     }
