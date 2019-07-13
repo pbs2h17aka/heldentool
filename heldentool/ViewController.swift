@@ -175,6 +175,14 @@ UITableViewDelegate, UITableViewDataSource {
                     self.parseBaseData (data: data!)
                 }
                 else {
+                    
+                    // Abfrage der bisherigen Helde
+                    let heldenListe = self.heldenModel.helden
+                    // Löschen der Liste
+                    for held in heldenListe {
+                        self.heldenModel.loescheHeld(held: held)
+                    }
+                    
                     self.parseHeldenData(data: data!)
                 }
             }
@@ -335,11 +343,11 @@ UITableViewDelegate, UITableViewDataSource {
         print("download")
         
         // Abfrage der bisherigen Helde
-        let heldenListe = heldenModel.helden
+        //let heldenListe = heldenModel.helden
         // Löschen der Liste
-        for held in heldenListe {
-            heldenModel.loescheHeld(held: held)
-        }
+        //for held in heldenListe {
+        //    heldenModel.loescheHeld(held: held)
+        //}
         
         // Erneuern der Heldenliste mit aktuellen Daten
         self.loadBaseData(script : "helden.php")
