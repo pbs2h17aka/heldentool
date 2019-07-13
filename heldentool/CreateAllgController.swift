@@ -34,11 +34,6 @@ class CreateAllgController: UIViewController, UIPickerViewDelegate, UIPickerView
     let kulturModel = KulturModel.item
     let professionModel = ProfessionModel.item
     
-    // Stammdaten Arrays
-    //var rassen : [String]
-    //var kulturen : [String]
-    //var professionen : [String]
-    
     override func viewDidLoad() {
         super.viewDidLoad()
         //Select Box default setzen
@@ -117,14 +112,6 @@ class CreateAllgController: UIViewController, UIPickerViewDelegate, UIPickerView
         if( pickerView.tag == 3){
             SharedItem.meinHeld.addProfession(profession : professionModel.professionen[row])
         }
-        
-        // Debug
-        // print("Rasse")
-        // print(SharedItem.meinHeld.rasse)
-        // print("Kultur")
-        // print(SharedItem.meinHeld.kultur)
-        // print("Profession")
-        // print(SharedItem.meinHeld.profession)
     }
     
     // Aufruf der nächsten View
@@ -132,7 +119,7 @@ class CreateAllgController: UIViewController, UIPickerViewDelegate, UIPickerView
         var vorname:String
         var nachname:String
         
-  //      Default Werte setzen
+        // Default Werte setzen
         if(nameView.text == ""){
             vorname = "VDummy"
         }
@@ -150,11 +137,5 @@ class CreateAllgController: UIViewController, UIPickerViewDelegate, UIPickerView
         
         SharedItem.meinHeld.name = String(vorname + " " + nachname)
         SharedItem.meinHeld.geschlecht = Int32(geschlecht)
-        
-        // Debug
-        // print("Name:")
-        // print(SharedItem.meinHeld.name)
-        // print("Geschlecht")
-        // print(SharedItem.meinHeld.geschlecht)
     }
 }

@@ -258,15 +258,6 @@ UITableViewDelegate, UITableViewDataSource {
                     profession.athletik = p.athletik
                     professionModel.save()
                 }
-
-                // Ausgabe der Stammdaten aus der Core Data
-                //print("Stammdaten aus der Core Data")
-                //print("Rassen:")
-                //print(rasseModel.rassenNamen)
-                //print("Kulturen:")
-                //print(kulturModel.kulturenNamen)
-                //print("Professionen")
-                //print(professionModel.professionenNamen)
             }
 
         }
@@ -470,10 +461,6 @@ UITableViewDelegate, UITableViewDataSource {
         h4.wildnis = 10
         h4.wissen = 18
         h4.wunder = 0
-        
-        // Ausgabe der Dummy Helden aus der Core Data
-        //print("Helden:")
-        //print(heldenModel.helden);
     }
 
 }

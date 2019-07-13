@@ -57,22 +57,6 @@ class SkillTableController: UITableViewController {
         let name = cell.contentView.viewWithTag(1) as! UILabel
         let wert = cell.contentView.viewWithTag(2) as! UILabel
         
-        /*
-        switch indexPath.row {
-        case 0: text = "Athletik: \(SharedItem.meinHeld.athletik)"
-        case 1: text = "Gesellschaft: \(SharedItem.meinHeld.gesellschaft)"
-        case 2: text = "Handwerk: \(SharedItem.meinHeld.handwerk)"
-        case 3: text = "Heimlichkeit: \(SharedItem.meinHeld.heimlichkeit)"
-        case 4: text = "Magie: \(SharedItem.meinHeld.magie)"
-        case 5: text = "Medizin: \(SharedItem.meinHeld.medizin)"
-        case 6: text = "Waffen: \(SharedItem.meinHeld.waffen)"
-        case 7: text = "Wildnis: \(SharedItem.meinHeld.wildnis)"
-        case 8: text = "Wissen: \(SharedItem.meinHeld.wissen)"
-        case 9: text = "Wunder: \(SharedItem.meinHeld.wunder)"
-        default: text = "yee"
-        }
-         */
-        
         switch indexPath.row {
         case 0: name.text = "Athletik:"
                 wert.text = String(SharedItem.meinHeld.athletik)
@@ -96,8 +80,6 @@ class SkillTableController: UITableViewController {
                 wert.text = String(SharedItem.meinHeld.wunder)
         default: name.text = "yee"
         }
-        
-        //cell.textLabel?.text = text
         
         return cell
     }

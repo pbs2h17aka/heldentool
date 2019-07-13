@@ -99,19 +99,6 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
         let name = cell.contentView.viewWithTag(1) as! UILabel
         let wert = cell.contentView.viewWithTag(2) as! UILabel
         
-        /*
-        switch indexPath.row {
-        case 0: text = "Charisma: \(SharedItem.meinHeld.charisma)"
-        case 1: text = "Fingerfertigkeit: \(SharedItem.meinHeld.fingerfertigkeit)"
-        case 2: text = "Gewandheit: \(SharedItem.meinHeld.gewandheit)"
-        case 3: text = "Intuition: \(SharedItem.meinHeld.intuition)"
-        case 4: text = "Klugheit: \(SharedItem.meinHeld.klugheit)"
-        case 5: text = "Körperkraft: \(SharedItem.meinHeld.koerperkraft)"
-        case 6: text = "Mut: \(SharedItem.meinHeld.mut)"
-        default: text = "yee"
-        }
-        */
-        
         switch indexPath.row {
         case 0: name.text = "Charisma:"
         wert.text = String(SharedItem.meinHeld.charisma)
@@ -129,8 +116,6 @@ class CreateAttrController: UIViewController, UITableViewDelegate, UITableViewDa
         wert.text = String(SharedItem.meinHeld.mut)
         default: name.text = "yee"
         }
-        
-        //ell.textLabel?.text = text
         
         return cell
     }
